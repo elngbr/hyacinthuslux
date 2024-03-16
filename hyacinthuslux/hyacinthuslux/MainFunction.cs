@@ -11,8 +11,12 @@ namespace hyacinthuslux
     {
         public static void Main(string[] args)
         {
-            Client c1 = new Client("1222", "Elena", "Eftimie", "elenaeft07@yahoo.com","Suditi-ungureni","0787823221",  88);
-            Console.WriteLine(c1.ToString());
+            //Client c1 = new Client("1222", "Elena", "Eftimie", "elenaeft07@yahoo.com","Suditi-ungureni","0787823221",  88);
+            //Console.WriteLine(c1.ToString());
+            Client c2 = Client.CreateInstance();
+            Console.WriteLine(c2.ToString());
+
+
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace hyacinthuslux
 {
-    internal class Client
+    internal class Client: Form1
     {
         private string ClientId;
         private string ClientFirstName;
@@ -15,6 +15,13 @@ namespace hyacinthuslux
         private string ClientAddress;
         private string ClientPhoneNumber;
         private double ClientLoyalityPoints;
+        //public string ClientId { get; private set; }
+        //public string ClientFirstName { get; private set; }
+        //public string ClientLastName { get; private set; }
+        //public string ClientEmail { get; private set; }
+        //public string ClientAddress { get; private set; }
+        //public string ClientPhoneNumber { get; private set; }
+        //public double ClientLoyalityPoints { get; private set; }
         private static HashSet<string> AlreadyUsedIds = new HashSet<string>();
         private const int MAXIMUM_PHONE_NUMBER_DIGITS = 16;
         private const int MINIMUM_PHONE_NUMBER_DIGITS = 8;
@@ -120,7 +127,7 @@ namespace hyacinthuslux
         {
             if (auxClientLoyalityPoints>MAXIMUM_LOYALITY_POINTS ||auxClientLoyalityPoints<0)
             {
-                throw new IndexOutOfRangeException("EXCEPTION THROWN!\n Loyality points are out of bounds [0-100].\n"
+                throw new IndexOutOfRangeException("EXCEPTION THROWN!\n Loyality points are out of bounds [0-100].\n" +
                     "Your inserted loyality points are:" + auxClientLoyalityPoints);
             }
             
@@ -163,11 +170,21 @@ namespace hyacinthuslux
         }
 
 
+        public Client()
+        {
+            
+        }
+
         public override string ToString()
         {
-            return $"ID:{ClinentId}\nName:{ClientFirstName + ClientLastName}\nEmail:{ClientEmail},\nAddress: {ClientAddress}," +
+            return $"ID:{ClientId}\nName:{ClientFirstName + ClientLastName}\nEmail:{ClientEmail},\nAddress: {ClientAddress}," +
                 $"\nPhone Number:{ClientPhoneNumber},\n Loyality Points:{ClientLoyalityPoints}";
         }
 
+
+        public static Client CreateInstance()
+        {
+            return new Client();
+        }
     }
 }

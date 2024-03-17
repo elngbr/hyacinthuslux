@@ -46,16 +46,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cart.cs" />
     <Compile Include="Client.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Delivery.cs" />
+    <Compile Include="DiscountedProduct.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Invoiceable.cs" />
     <Compile Include="MainFunction.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Program.cs" />

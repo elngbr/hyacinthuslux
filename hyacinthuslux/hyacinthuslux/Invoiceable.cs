@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace hyacinthuslux
 {
-    internal class Invoiceable
+    abstract class Invoiceable
     {
+        public abstract void getInvoiceItem();
     }
 }

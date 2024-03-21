@@ -6,132 +6,145 @@ using System.Threading.Tasks;
 
 namespace hyacinthuslux
 {
-    internal class Client: Form1
+    internal class Client
     {
-        private string ClientId;
-        private string ClientFirstName;
-        private string ClientLastName;
-        private string ClientEmail;
-        private string ClientAddress;
-        private string ClientPhoneNumber;
-        private double ClientLoyalityPoints;
-        //public string ClientId { get; private set; }
-        //public string ClientFirstName { get; private set; }
-        //public string ClientLastName { get; private set; }
-        //public string ClientEmail { get; private set; }
-        //public string ClientAddress { get; private set; }
-        //public string ClientPhoneNumber { get; private set; }
-        //public double ClientLoyalityPoints { get; private set; }
+        private string clientId = "DEFAULT_ID";
+        private string clientFirstName = "FirstNameDefault";
+        private string clientLastName = "LastNameDefault";
+        private string clientEmail = "email@deafult.ro";
+        private string clientAddress = "Street Default, no. -1";
+        private string clientPhoneNumber = "Default no";
+        private double clientLoyaltyPoints = 0.00;
         private static HashSet<string> AlreadyUsedIds = new HashSet<string>();
         private const int MAXIMUM_PHONE_NUMBER_DIGITS = 16;
         private const int MINIMUM_PHONE_NUMBER_DIGITS = 8;
-        private const int MAXIMUM_LOYALITY_POINTS = 100;
+        private const int MAXIMUM_LOYALTY_POINTS = 100;
 
-        //getters
-        public string GetClientId() { return this.ClientId; }
-        public string GetClientFirstName() { return this.ClientFirstName; }
-        public string GetClinentLastName() { return this.ClientLastName; }
-        public string GetClinetEmail() { return this.ClientEmail; }
-        public string GetClientAddress() { return this.ClientAddress; }
-        public string GetClinetPhoneNumber() { return this.ClientPhoneNumber; }
-        public double GetClinetLoyalityPoints() { return this.ClientLoyalityPoints; }
-
-        //setters
-        public void SetClinetId(string auxClientId)
+        public String ClientId
         {
-            if (AlreadyUsedIds.Contains(auxClientId))
+            set
             {
-                throw new ArgumentException("EXCEPTION THROWN!\nThe ClientId you inserted it's already used by someone else." +
-                    "\nPlease change ID!\nYour inserted ID is:" + auxClientId + ".\n");
+                if (AlreadyUsedIds.Contains(value))
+                {
+                    throw new ArgumentException("*********EXCEPTION THROWN!\nThe ClientId you inserted it's already used by someone else." +
+                        "\nPlease change ID!\nYour inserted ID is:" + value + ".\n");
+                }
+                else if (string.IsNullOrEmpty(this.clientId))
+                {
+                    //throw new Exception("***********EXCEPTION THROWN!\nThe ClientId you inserted is null or empty." +
+                    //  "\nPlease change ID!\nYour inserted ID is:" + auxClientId + ".\n");
+                }
+                clientId = value;
+                AlreadyUsedIds.Add(value);
             }
-            else if (string.IsNullOrEmpty(this.ClientId))
-            {
-                throw new Exception("EXCEPTION THROWN!\nThe ClientId you inserted is null or empty." +
-                    "\nPlease change ID!\nYour inserted ID is:" + auxClientId + ".\n");
-            }
-            ClientId = auxClientId;
-            AlreadyUsedIds.Add(auxClientId);
+
+            get { return this.clientId; }
         }
 
-        public void SetClinetFirstName(string auxClientFirstName)
+        public String ClientFirstName
         {
-            if (auxClientFirstName[0] < 'A' || auxClientFirstName[0] > 'Z')
-            {
-                throw new ArgumentException("EXCEPTION THROWN!\nThe first name of the client must start with capital letter." +
-                    "\nPlease change first name!" + "The inserted first name is:" + auxClientFirstName + ".\n");
-            }
-            else if (string.IsNullOrEmpty(auxClientFirstName))
-            {
-                throw new Exception("EXCEPTION THROWN!\nThe first name of the client is null or empty." +
-                    "\nPlease change first name!" + "\nThe inserted first name is:" + auxClientFirstName + ".\n");
-            }
-            this.ClientFirstName = auxClientFirstName;
 
+            set
+            {
+                if (value[0] < 'A' || value[0] > 'Z')
+                {
+                    throw new ArgumentException("EXCEPTION THROWN!\nThe first name of the client must start with capital letter." +
+                        "\nPlease change first name!" + "The inserted first name is:" + value + ".\n");
+                }
+                else if (string.IsNullOrEmpty(value))
+                {
+                    throw new Exception("EXCEPTION THROWN!\nThe first name of the client is null or empty." +
+                        "\nPlease change first name!" + "\nThe inserted first name is:" + value + ".\n");
+                }
+                this.clientFirstName = value;
+
+            }
+            get { return this.clientFirstName; }
         }
 
-        public void SetClinetLastName(string auxClientLastName)
-        {
-            if (auxClientLastName[0] < 'A' || auxClientLastName[0] > 'Z' || auxClientLastName == null)
-            {
-                throw new ArgumentException("EXCEPTION THROWN!\nThe last name of the client must start with capital letter." +
-                    "\nPlease change last name!" + "The inserted last name is:" + auxClientLastName + ".\n");
-            }
-            else if (string.IsNullOrEmpty(auxClientLastName))
-            {
-                throw new Exception("EXCEPTION THROWN!\nThe first name of the client is null or empty." +
-                    "\nPlease change first name!" + "\nThe inserted first name is:" + auxClientLastName + ".\n");
-            }
-            this.ClientLastName = auxClientLastName;
 
+
+
+        public String ClientLastName
+        {
+            set
+            {
+                if (value[0] < 'A' || value[0] > 'Z')
+                {
+                    throw new ArgumentException("EXCEPTION THROWN!\nThe last name of the client must start with capital letter." +
+                        "\nPlease change last name!" + "The inserted last name is:" + value + ".\n");
+                }
+                else if (string.IsNullOrEmpty(value))
+                {
+                    throw new Exception("EXCEPTION THROWN!\nThe first name of the client is null or empty." +
+                        "\nPlease change first name!" + "\nThe inserted first name is:" + value + ".\n");
+                }
+                this.clientLastName = value;
+
+            }
+            get
+            { return this.clientLastName; }
         }
 
-        public void SetClinetEmail(string auxClientEmail)
+
+        public String ClientEmail
         {
-            if (string.IsNullOrEmpty(auxClientEmail))
+            set
             {
-                throw new ArgumentException("EXCEPTION THROWN!\nThe email of the client is null or empty." +
-                    "\nPlease change email!" + "\nThe inserted email is:" + auxClientEmail + ".\n");
-            }
-            this.ClientEmail = auxClientEmail;
-        }
-
-        public void SetClinetAddress(string auxClientAddress)
-        {
-            if (string.IsNullOrEmpty(auxClientAddress))
-            {
-                throw new ArgumentException("EXCEPTION THROWN!\nThe email of the client shoud not be NULL." +
-                    "\nPlease change email!" + "\nThe inserted email is:" + auxClientAddress + ".\n");
-            }
-            this.ClientAddress = auxClientAddress;
-        }
-
-        public void SetClientPhoneNumber(string auxClientPhoneNumber)
-        {
-            if (auxClientPhoneNumber.Length > MAXIMUM_PHONE_NUMBER_DIGITS || auxClientPhoneNumber.Length < MINIMUM_PHONE_NUMBER_DIGITS)
-            {
-                throw new IndexOutOfRangeException("EXCEPTION THROWN!\n Phone number length is out of bounds [8-16].\n" +
-                    "Your inserted phone number is: " + auxClientPhoneNumber);
-
-            }
-            else if (string.IsNullOrEmpty(auxClientPhoneNumber))
-            {
-                throw new ArgumentException("EXCEPTION THROWN!\n Phone number null or empty.\n" +
-                    "Your inserted phone number is: " + auxClientPhoneNumber);
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("EXCEPTION THROWN!\nThe email of the client is null or empty." +
+                        "\nPlease change email!" + "\nThe inserted email is:" + value + ".\n");
+                }
+                this.clientEmail = value;
             }
 
-            this.ClientPhoneNumber = auxClientPhoneNumber;
+            get { return this.clientEmail; }
 
         }
 
-        public void SetClientLoyalityPoints(double auxClientLoyalityPoints)
+
+        public string ClientAddress
         {
-            if (auxClientLoyalityPoints>MAXIMUM_LOYALITY_POINTS ||auxClientLoyalityPoints<0)
+            get { return clientAddress; }
+            set
             {
-                throw new IndexOutOfRangeException("EXCEPTION THROWN!\n Loyality points are out of bounds [0-100].\n" +
-                    "Your inserted loyality points are:" + auxClientLoyalityPoints);
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("EXCEPTION THROWN!\nThe address of the client is null or empty. Please change the address!");
+                }
+                clientAddress = value;
             }
-            
-            this.ClientLoyalityPoints= auxClientLoyalityPoints;
+        }
+
+        public string ClientPhoneNumber
+        {
+            get { return clientPhoneNumber; }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("EXCEPTION THROWN!\nThe phone number of the client is null or empty. Please change the phone number!");
+                }
+                else if (value.Length < MINIMUM_PHONE_NUMBER_DIGITS || value.Length > MAXIMUM_PHONE_NUMBER_DIGITS)
+                {
+                    throw new ArgumentException("EXCEPTION THROWN!\nThe phone number length is out of bounds [8-16]. Please provide a valid phone number!");
+                }
+                clientPhoneNumber = value;
+            }
+        }
+
+        public double ClientLoyaltyPoints
+        {
+            get { return this.clientLoyaltyPoints; }
+            set
+            {
+                if (value < 0 || value > Client.MAXIMUM_LOYALTY_POINTS)
+                {
+                    throw new ArgumentException("EXCEPTION THROWN!\nThe loyalty points of the client are out of bounds [0-100]. Please provide valid loyalty points!");
+                }
+                clientLoyaltyPoints = value;
+            }
         }
 
         //constructors
@@ -140,45 +153,36 @@ namespace hyacinthuslux
 
         {
             try
-            { this.SetClinetId(auxClientId); }
-            catch (ArgumentException ex)
             {
-                Console.WriteLine(ex.Message);
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
-
-
-            try
-            {
-                this.SetClinetEmail(auxClientEmail);
+                this.ClientId = auxClientId;
+                this.ClientEmail = auxClientEmail;
+                this.ClientPhoneNumber = auxClientPhoneNumber;
+                this.ClientAddress = auxClientAddress;
+                this.ClientFirstName = auxClientFirstName;
+                this.ClientLastName = auxClientLastName;
+                this.ClientLoyaltyPoints = auxClientLoyalityPoints;
             }
             catch (ArgumentException ex)
             {
                 Console.WriteLine(ex.Message);
             }
-
-
-            this.SetClientPhoneNumber(auxClientPhoneNumber);
-            this.SetClinetAddress(auxClientAddress);
-            this.SetClinetFirstName(auxClientFirstName);
-            this.SetClinetLastName(auxClientLastName);
-            this.SetClientLoyalityPoints(auxClientLoyalityPoints);
         }
 
 
         public Client()
         {
-            
+
         }
 
         public override string ToString()
         {
-            return $"ID:{ClientId}\nName:{ClientFirstName + ClientLastName}\nEmail:{ClientEmail},\nAddress: {ClientAddress}," +
-                $"\nPhone Number:{ClientPhoneNumber},\n Loyality Points:{ClientLoyalityPoints}";
+
+            if (this.clientId == "DEFAULT_ID")
+            {
+                return "\n\n\n\n\n\nCannot print a client without ID!" + " Your object is " + this.GetHashCode() + ", but it has no ID!";
+            }
+            return $"\n\n\n\n\n\nID:{clientId}\nName:{clientFirstName + " " + clientLastName}\nEmail:{clientEmail},\nAddress: {clientAddress}," +
+                $"\nPhone Number:{clientPhoneNumber},\nLoyality Points:{clientLoyaltyPoints}";
         }
 
 

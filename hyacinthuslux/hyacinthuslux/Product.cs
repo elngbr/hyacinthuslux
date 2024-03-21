@@ -6,171 +6,171 @@ using System.Threading.Tasks;
 
 namespace hyacinthuslux
 {
-   
 
-        internal enum FlowerEnum
+
+
+    internal class Product /*: Invoiceable*/
+    {
+
+        private decimal Price = 0;
+        private string NameProduct = "DEFAULT_NAME";
+        private bool IsAvailable = false;
+        private byte[] ImageData;
+        private FlowerEnum FlowerType = FlowerEnum.Default;
+        private static HashSet<string> AlreadyUsedNames = new HashSet<string>();
+        //public override void getInvoiceItem()
+        //{
+
+        //}
+
+        public Product(decimal auxPrice, string auxNameProduct, bool auxAvailability, FlowerEnum auxFlowerType)
         {
-            Hyacinth, //Zambila
-            Rose,
-            Tulip,
-            Lavender,
-            Peony,    //Bujor
-            Iris,
-            Dahlia,
-            Orchid,   //Orhidee
-            Snowdrop,  //Ghiocel
-            Magnolia,
-            Sunflower,
-            Tuberose,
-            Daffodil, //narcisa
-            Lily,     //crizantema
-            Lilac,
-            Zinnia,
-            Azalea,
-            Carnation //garoafa
+            try
+            {
+                this.PriceProduct = auxPrice;
+                this.nameProduct = auxNameProduct;
+                this.ProductAvailability = auxAvailability;
+                this.flowerType = auxFlowerType;
+
+            }
+            catch (Exception ex) { Console.WriteLine(ex.Message); }
         }
 
-        internal class Product /*: Invoiceable*/
+
+        ///Formatted price
+        public string GetFormattedPrice()
+        {
+            return $"{this.Price.ToString("c")}";
+        }
+
+        ///OVERRIDDEN TO STRING
+        public override string ToString()
         {
 
-            private float Price;
-            private string NameProduct;
-            private bool IsAvailable = false;
-            private byte[] ImageData;
-            private FlowerEnum FlowerType;
-            private static HashSet<string> AlreadyUsedNames = new HashSet<string>();
-            //public override void getInvoiceItem()
-            //{
-
-            //}
-
-            public Product(float auxPrice, string auxNameProduct, bool auxAvailability, FlowerEnum auxFlowerType)
+            if (this.NameProduct == "DEFAULT_NAME")
             {
-                try
-                {
-                    this.SetPrice(auxPrice);
-                    this.SetName(auxNameProduct);
-                    this.SetAvailability(auxAvailability);
-                    this.SetFlowerType(auxFlowerType);
-
-                }
-                catch (Exception ex) { Console.WriteLine(ex.Message); }
+                return "\n\n\n\nCannot print product without name!" + " Your product is " + this.GetHashCode() + ", but it has no name!";
             }
+            return $"\n\n\n\n\n\n\nName:{NameProduct}\nPrice:{this.GetFormattedPrice()}\nAvailability:{this.IsAvailable}\nFlower type:{this.FlowerType}";
+        }
 
 
-            public FlowerEnum GetFlowerType()
+
+
+
+        ///Properties for nameProduct
+
+        public string nameProduct
+        {
+
+
+            set
             {
-                return this.FlowerType;
-
-                #region
-                //switch (this.FlowerType)
-                //{
-                //    case 0:
-                //        return "Hyacinth";
-                //    case 1:
-                //        return "Rose";
-                //    case 2:
-                //        return "Tulip";
-                //    case 3:
-                //        return "Hyacinth";
-                //    case 4:
-                //        return "Hyacinth";
-                //    case 5:
-                //        return "Hyacinth";
-                //    case 6:
-                //        return "Hyacinth";
-                //    case 7:
-                //        return "Hyacinth";
-                //    case 8:
-                //        return "Hyacinth";
-                //    case 9:
-                //        return "Hyacinth";
-                //    case 10:
-                //        return "Hyacinth";
-                //    case 11:
-                //        return "Hyacinth";
-                //    case 12:
-                //        return "Hyacinth";
-                //    case 13:
-                //        return "Hyacinth";
-                //    case 14:
-                //        return "Hyacinth";
-                //    case 15:
-                //        return "Hyacinth";
-                //    case 16:
-                //        return "Hyacinth";
-                //    case 1:
-                //        return "Hyacinth";
-                #endregion
-            }
-
-            public void SetFlowerType(FlowerEnum flowerType)
-            {
-                this.FlowerType = flowerType;
-            }
-
-
-            public override string ToString()
-            {
-
-                if (string.IsNullOrEmpty(this.NameProduct))
-                {
-                    return "\n\n\n\nCannot print product without name!" + " Your product is " + this.GetHashCode() + ", but it has no name!";
-                }
-                return $"\n\n\n\n\n\n\nName:{NameProduct}\nPrice:{Price.ToString("c")}\nAvailability:{this.IsAvailable}\nFlower type:{this.FlowerType}";
-            }
-            public void SetName(string auxName)
-            {
-                if (string.IsNullOrEmpty(auxName))
+                if (string.IsNullOrEmpty(value))
                 {
                     throw new ArgumentException("*******EXCEPTION THROWN!\nThe name is null or empty!\nPlease insert other name!" +
-                        "\nYour inserted name is: " + auxName);
+                        "\nYour inserted name is: " + value);
                 }
-                else if (AlreadyUsedNames.Contains(auxName))
+                else if (AlreadyUsedNames.Contains(value))
                 {
                     throw new Exception("*******EXCEPTION THROWN!\nThe name you inserted it's already used by other product." +
-                        "\nPlease change name!\nYour inserted name is:" + auxName + ".\n");
+                        "\nPlease change name!\nYour inserted name is:" + value + ".\n");
                 }
-                else if (auxName[0] < 'A' || auxName[0] > 'Z')
+                else if (value[0] < 'A' || value[0] > 'Z')
                 {
                     throw new IndexOutOfRangeException("*******EXCEPTION THROWN!\nThe name of the product must start with capital letter." +
-                        "\nPlease change product name!" + "The inserted product name is:" + auxName + ".\n");
+                        "\nPlease change product name!" + "The inserted product name is:" + value + ".\n");
                 }
 
-                this.NameProduct = auxName;
-                AlreadyUsedNames.Add(auxName);
+                this.NameProduct = value;
+                AlreadyUsedNames.Add(value);
             }
 
-            public void SetPrice(float auxPrice)
+            get { return this.NameProduct; }
+
+        }
+
+
+
+
+
+        ///Property for price
+
+        public decimal PriceProduct
+        {
+            set
             {
-                if (auxPrice < 0)
+                if (value < 0)
                 {
 
                     throw new ArgumentException("********EXCEPTION THROWN!\nThe price of any product should be more than 0!" +
-                    "\nYour price is: " + auxPrice);
+                    "\nYour price is: " + value);
                 }
 
-                this.Price = auxPrice;
+                this.Price = value;
             }
 
-            public void SetAvailability(bool auxAvailability)
+            get { return this.Price; }
+        }
+
+
+        //Properties for enum
+        public FlowerEnum flowerType
+        {
+            set { this.FlowerType = value; }
+            get { return this.flowerType; }
+        }
+
+
+        //properties for Availability
+        public bool ProductAvailability
+        {
+            set
             {
-                this.IsAvailable = auxAvailability;
-            }
-            public string GetFormattedPrice()
-            {
-                return $"{this.Price.ToString():c}";
+                this.IsAvailable = value;
             }
 
-            public string GetNameProduct()
-            {
-                return this.NameProduct;
-            }
 
-            public bool GetAvailability()
+
+            get
             {
                 return this.IsAvailable;
             }
         }
+
+
+
+        ///overloading operators
+
+
+
+
+        ///1. Operator +
+        public static decimal operator +(Product p1, Product p2)
+        {
+            return p1.PriceProduct + p2.PriceProduct;
+        }
+
+        ///2. Operator -
+        public static decimal operator -(Product p1, Product p2)
+        {
+            return p1.PriceProduct - p2.PriceProduct;
+        }
+
+
+        ///3. Operator !   
+        public static bool operator !(Product p1)
+        {
+            return !(p1.IsAvailable == false);
+        }
+
+        ///4. Operator ~
+        public static Product operator ~(Product p1)
+        {
+            return new Product(-p1.PriceProduct, p1.NameProduct, !p1.IsAvailable, p1.FlowerType);
+
+        }
+
+    }
 }
 

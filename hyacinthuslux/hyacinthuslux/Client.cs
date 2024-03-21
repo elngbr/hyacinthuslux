@@ -32,7 +32,7 @@ namespace hyacinthuslux
                 else if (string.IsNullOrEmpty(this.clientId))
                 {
                     throw new Exception("***********EXCEPTION THROWN!\nThe ClientId you inserted is null or empty." +
-                      "\nPlease change ID!\nYour inserted ID is:" + auxClientId + ".\n");
+                      "\nPlease change ID!\nYour inserted ID is:" + value + ".\n");
                 }
                 clientId = value;
                 AlreadyUsedIds.Add(value);

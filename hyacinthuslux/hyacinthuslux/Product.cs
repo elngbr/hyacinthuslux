@@ -9,7 +9,7 @@ namespace hyacinthuslux
 
 
 
-    internal class Product /*: Invoiceable*/
+    internal class Product : ICloneable
     {
 
         private decimal Price = 0;
@@ -18,12 +18,11 @@ namespace hyacinthuslux
         private byte[] ImageData;
         private FlowerEnum FlowerType = FlowerEnum.Default;
         private static HashSet<string> AlreadyUsedNames = new HashSet<string>();
-        //public override void getInvoiceItem()
-        //{
+        private int productStock;
 
-        //}
 
-        public Product(decimal auxPrice, string auxNameProduct, bool auxAvailability, FlowerEnum auxFlowerType)
+
+        public Product(decimal auxPrice, string auxNameProduct, bool auxAvailability, FlowerEnum auxFlowerType, int auxProductStock)
         {
             try
             {
@@ -31,11 +30,17 @@ namespace hyacinthuslux
                 this.nameProduct = auxNameProduct;
                 this.ProductAvailability = auxAvailability;
                 this.flowerType = auxFlowerType;
+                this.ProductStock = auxProductStock;
 
             }
             catch (Exception ex) { Console.WriteLine(ex.Message); }
         }
 
+
+        public int getStockOfProduct()
+        {
+            return this.ProductStock;
+        }
 
         ///Formatted price
         public string GetFormattedPrice()
@@ -55,7 +60,21 @@ namespace hyacinthuslux
         }
 
 
+        //Properties for stock
+        public int ProductStock
+        {
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("*******EXCEPTION THROWN!\nThe stock is less than 0.\nPlease insert other stock!" +
+                        "\nYour inserted stock is: " + value);
+                }
 
+                this.productStock = value;
+            }
+            get { return this.productStock; }
+        }
 
 
         ///Properties for nameProduct
@@ -167,7 +186,21 @@ namespace hyacinthuslux
         ///4. Operator ~
         public static Product operator ~(Product p1)
         {
-            return new Product(-p1.PriceProduct, p1.NameProduct, !p1.IsAvailable, p1.FlowerType);
+            return new Product(-p1.PriceProduct, p1.NameProduct, !p1.IsAvailable, p1.FlowerType, p1.ProductStock);
+
+        }
+
+        public object Clone()
+        {
+            Product clonedProduct = new Product(Price, NameProduct, IsAvailable, FlowerType, ProductStock);
+
+            if (ImageData != null)
+            {
+                clonedProduct.ImageData = new byte[ImageData.Length];
+                Array.Copy(ImageData, clonedProduct.ImageData, ImageData.Length);
+            }
+
+            return (Product)clonedProduct;
 
         }
 

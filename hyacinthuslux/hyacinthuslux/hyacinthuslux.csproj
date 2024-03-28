@@ -51,17 +51,20 @@
     <Compile Include="Delivery.cs" />
     <Compile Include="DiscountedProduct.cs" />
     <Compile Include="EnumFlower.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Clients_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Clients_Form.Designer.cs">
+      <DependentUpon>Clients_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Invoiceable.cs" />
     <Compile Include="MainFunction.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Clients_Form.resx">
+      <DependentUpon>Clients_Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

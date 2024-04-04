@@ -180,10 +180,11 @@
             this.listViewClients.HideSelection = false;
             this.listViewClients.Location = new System.Drawing.Point(2, 261);
             this.listViewClients.Name = "listViewClients";
-            this.listViewClients.Size = new System.Drawing.Size(804, 177);
+            this.listViewClients.Size = new System.Drawing.Size(797, 177);
             this.listViewClients.TabIndex = 15;
             this.listViewClients.UseCompatibleStateImageBehavior = false;
             this.listViewClients.View = System.Windows.Forms.View.Details;
+            this.listViewClients.SelectedIndexChanged += new System.EventHandler(this.listViewClients_SelectedIndexChanged);
             // 
             // ID
             // 

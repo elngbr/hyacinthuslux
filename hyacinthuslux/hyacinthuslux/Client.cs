@@ -24,22 +24,24 @@ namespace hyacinthuslux
         {
             set
             {
-                if (AlreadyUsedIds.Contains(value))
+                if (!value.Equals(clientId) && AlreadyUsedIds.Contains(value))
                 {
                     throw new ArgumentException("*********EXCEPTION THROWN!\nThe ClientId you inserted it's already used by someone else." +
                         "\nPlease change ID!\nYour inserted ID is:" + value + ".\n");
                 }
-                else if (string.IsNullOrEmpty(this.clientId))
+                else if (string.IsNullOrEmpty(value))
                 {
                     throw new Exception("***********EXCEPTION THROWN!\nThe ClientId you inserted is null or empty." +
                       "\nPlease change ID!\nYour inserted ID is:" + value + ".\n");
                 }
+                AlreadyUsedIds.Remove(clientId); // Remove the previous ID from the HashSet
                 clientId = value;
                 AlreadyUsedIds.Add(value);
             }
 
             get { return this.clientId; }
         }
+
 
         public String ClientFirstName
         {

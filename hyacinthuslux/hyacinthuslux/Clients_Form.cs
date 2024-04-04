@@ -199,6 +199,10 @@ namespace hyacinthuslux
                 textBoxClientPhoneNumber.Text = selectedClient.ClientPhoneNumber;
                 textBoxClientLoyaltyPoints.Text = selectedClient.ClientLoyaltyPoints.ToString();
             }
+
         }
+
+
+
     }
 }

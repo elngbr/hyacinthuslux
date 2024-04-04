@@ -47,9 +47,19 @@ namespace hyacinthuslux
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
+            ResetProductsForm();
+            DisplayProducts();
         }
 
-      
+      private void ResetProductsForm()
+        {
+            
+            textBoxName.Text = string.Empty;
+            textBoxPrice.Text = string.Empty;
+            textBoxStock.Text = string.Empty;
+            checkBoxAvailability.Checked = false;
+            comboBoxFlowerEnum.Text = string.Empty;
+        }
 
         private void DisplayProducts()
         {
@@ -57,16 +67,27 @@ namespace hyacinthuslux
             listViewProducts.Items.Clear();
             foreach(var product in products)
             {
-                var listItem = new ListViewItem(product.nameProduct);
+                ListViewItem listItem = new ListViewItem(product.nameProduct);
                 listItem.SubItems.Add(product.PriceProduct.ToString());
                 listItem.SubItems.Add(product.ProductStock.ToString());
                 listItem.SubItems.Add(product.flowerType.ToString());
-
-
+                listItem.SubItems.Add(product.ProductAvailability.ToString());
 
                 listViewProducts.Items.Add(listItem);
             }
 
+        }
+
+        private void buttonDeleteProduct_Click(object sender, EventArgs e)
+        {
+            if(listViewProducts.SelectedItems.Count > 0)
+            {
+                var selectedProduct = listViewProducts.SelectedItems[0].Tag as Product;
+
+                products.Remove(selectedProduct);
+                ResetProductsForm();
+                DisplayProducts();  
+            }
         }
     }
 }

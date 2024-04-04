@@ -91,7 +91,6 @@
             this.labelPrice.Size = new System.Drawing.Size(52, 22);
             this.labelPrice.TabIndex = 5;
             this.labelPrice.Text = "Price";
-            //this.labelPrice.Click += new System.EventHandler(this.labelPrice_Click);
             // 
             // labelName
             // 
@@ -130,16 +129,15 @@
             this.comboBoxFlowerEnum.Name = "comboBoxFlowerEnum";
             this.comboBoxFlowerEnum.Size = new System.Drawing.Size(100, 24);
             this.comboBoxFlowerEnum.TabIndex = 10;
-           // this.comboBoxFlowerEnum.SelectedIndexChanged += new System.EventHandler(this.comboBoxFlowerEnum_SelectedIndexChanged);
             // 
             // listViewProducts
             // 
             this.listViewProducts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.NameProduct,
             this.Price,
-            this.Availability,
+            this.Stock,
             this.Type,
-            this.Stock});
+            this.Availability});
             this.listViewProducts.HideSelection = false;
             this.listViewProducts.Location = new System.Drawing.Point(112, 234);
             this.listViewProducts.Name = "listViewProducts";
@@ -178,6 +176,7 @@
             this.buttonDeleteProduct.TabIndex = 12;
             this.buttonDeleteProduct.Text = "Delete Product";
             this.buttonDeleteProduct.UseVisualStyleBackColor = true;
+            this.buttonDeleteProduct.Click += new System.EventHandler(this.buttonDeleteProduct_Click);
             // 
             // buttonSaveProduct
             // 
@@ -209,7 +208,6 @@
             this.checkBoxAvailability.TabIndex = 15;
             this.checkBoxAvailability.Text = "Availability";
             this.checkBoxAvailability.UseVisualStyleBackColor = false;
-            //this.checkBoxAvailability.CheckedChanged += new System.EventHandler(this.checkBoxAvailability_CheckedChanged);
             // 
             // ProductsForm
             // 

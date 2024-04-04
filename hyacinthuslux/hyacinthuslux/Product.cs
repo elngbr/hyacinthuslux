@@ -137,7 +137,7 @@ namespace hyacinthuslux
         public FlowerEnum flowerType
         {
             set { this.FlowerType = value; }
-            get { return this.flowerType; }
+            get { return this.FlowerType; }
         }
 
 

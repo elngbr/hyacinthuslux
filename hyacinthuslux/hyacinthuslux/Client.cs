@@ -24,6 +24,7 @@ namespace hyacinthuslux
         {
             set
             {
+
                 if (!value.Equals(clientId) && AlreadyUsedIds.Contains(value))
                 {
                     throw new ArgumentException("*********EXCEPTION THROWN!\nThe ClientId you inserted it's already used by someone else." +

@@ -17,17 +17,7 @@ namespace hyacinthuslux
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            // Add your condition here to decide which form to display
-            bool showClientsForm = true; // Change this condition as needed
-
-            if (showClientsForm)
-            {
-                Application.Run(new ClientsForm());
-            }
-            else
-            {
-                Application.Run(new ProductsForm());
-            }
+            
         }
     }
 }

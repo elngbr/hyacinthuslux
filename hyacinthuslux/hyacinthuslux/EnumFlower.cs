@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace hyacinthuslux
 {
-    internal enum FlowerEnum
+    public enum FlowerEnum
     {
         Hyacinth, //Zambila
         Rose,

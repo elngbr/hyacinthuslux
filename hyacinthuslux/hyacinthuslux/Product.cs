@@ -38,6 +38,8 @@ namespace hyacinthuslux
             p.productType = this.productType;
             return p;
         }
+
+        
     }
 }
 

@@ -27,5 +27,11 @@ namespace hyacinthuslux
             Client_Form form=new Client_Form();
             form.Show();
         }
+
+        private void btnAddProduct_Click(object sender, EventArgs e)
+        {
+            Product_Form fomr=new Product_Form();   
+            fomr.Show();
+        }
     }
 }

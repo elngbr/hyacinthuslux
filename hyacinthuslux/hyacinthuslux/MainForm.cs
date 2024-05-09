@@ -16,5 +16,16 @@ namespace hyacinthuslux
         {
             InitializeComponent();
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void addClientBtn_Click(object sender, EventArgs e)
+        {
+            Client_Form form=new Client_Form();
+            form.Show();
+        }
     }
 }

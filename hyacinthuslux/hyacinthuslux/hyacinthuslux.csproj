@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client.cs" />
+    <Compile Include="Client_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Client_Form.Designer.cs">
+      <DependentUpon>Client_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Delivery.cs" />
     <Compile Include="EnumFlower.cs" />
     <Compile Include="MainForm.cs">
@@ -58,6 +64,9 @@
     <Compile Include="Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Client_Form.resx">
+      <DependentUpon>Client_Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

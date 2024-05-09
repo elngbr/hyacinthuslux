@@ -12,11 +12,11 @@ namespace hyacinthuslux
     public class Product : ICloneable
     {
 
-        private decimal productPrice { get; set; }
-        private string productName { get; set; }
-        private bool IsAvailable { get; set; }
-        private FlowerEnum productType { get; set; }
-        private int productStock { get; set; }
+        public decimal productPrice { get; set; }
+        public string productName { get; set; }
+        public bool IsAvailable { get; set; }
+        public FlowerEnum productType { get; set; }
+        public int productStock { get; set; }
 
         public Product() { }
 
@@ -31,7 +31,12 @@ namespace hyacinthuslux
 
         public object Clone()
         {
-            return this.productStock.CompareTo(this.productPrice);
+            Product p = null;
+            p= (Product)this.Clone();
+            p.productPrice = this.productPrice;
+            p.productName = this.productName;
+            p.productType = this.productType;
+            return p;
         }
     }
 }

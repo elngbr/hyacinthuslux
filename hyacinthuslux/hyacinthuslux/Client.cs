@@ -9,15 +9,15 @@ namespace hyacinthuslux
 {
     public class Client:IComparable<Client>
     {
-        private string clientId { get; set; }
-        private string clientFirstName { get; set; }
-        private string clientLastName { get; set; }
-        private string clientEmail { get; set; }
-        private string clientAddress { get; set; }
-        private string clientPhoneNumber { get; set; }
-        private double clientLoyaltyPoints { get; set; }
+        public int clientId { get; set; }
+        public string clientFirstName { get; set; }
+        public string clientLastName { get; set; }
+        public string clientEmail { get; set; }
+        public string clientAddress { get; set; }
+        public string clientPhoneNumber { get; set; }
+        public double clientLoyaltyPoints { get; set; }
 
-        public Client(string Id, string fname, string lname, string email, string address, string phonenumber, double loyaltyPoints)
+        public Client(int Id, string fname, string lname, string email, string address, string phonenumber, double loyaltyPoints)
         {
             this.clientAddress = address;
             this.clientId = Id;

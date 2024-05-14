@@ -380,5 +380,49 @@ namespace hyacinthuslux
                 tbPhoneNumber.Text=(string)e.Data.GetData(DataFormats.Text);
             }
         }
+
+        private void ExportReportAsTxt(List<Client> clients, string filePath)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            // Add header
+            sb.AppendLine("Client Report");
+            sb.AppendLine("===========================");
+
+            // Add client details
+            foreach (var client in clients)
+            {
+                sb.AppendLine($"ID: {client.clientId}");
+                sb.AppendLine($"Name: {client.clientFirstName} {client.clientLastName}");
+                sb.AppendLine($"Email: {client.clientEmail}");
+                sb.AppendLine($"Address: {client.clientAddress}");
+                sb.AppendLine($"Phone Number: {client.clientPhoneNumber}");
+                sb.AppendLine($"Loyalty Points: {client.clientLoyaltyPoints}");
+                sb.AppendLine("---------------------------");
+            }
+
+            // Write content to the file
+            File.WriteAllText(filePath, sb.ToString());
+
+            MessageBox.Show("Report exported successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+
+        private void btnTXT_Click(object sender, EventArgs e)
+        {
+            // Open file dialog to choose the export location
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Text Files (*.txt)|*.txt";
+            saveFileDialog.Title = "Export Report as TXT";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = saveFileDialog.FileName;
+
+                // Call the export method
+                ExportReportAsTxt(clients, filePath);
+            }
+
+        }
     }
 }

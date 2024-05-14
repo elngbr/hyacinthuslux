@@ -63,6 +63,7 @@
             this.deserializeXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCopy = new System.Windows.Forms.Button();
             this.btnPaste = new System.Windows.Forms.Button();
+            this.btnTXT = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLoy)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -197,7 +198,7 @@
             // 
             // bntAddClient
             // 
-            this.bntAddClient.Location = new System.Drawing.Point(122, 586);
+            this.bntAddClient.Location = new System.Drawing.Point(28, 577);
             this.bntAddClient.Name = "bntAddClient";
             this.bntAddClient.Size = new System.Drawing.Size(196, 85);
             this.bntAddClient.TabIndex = 16;
@@ -207,7 +208,7 @@
             // 
             // btnSaveClient
             // 
-            this.btnSaveClient.Location = new System.Drawing.Point(460, 586);
+            this.btnSaveClient.Location = new System.Drawing.Point(295, 577);
             this.btnSaveClient.Name = "btnSaveClient";
             this.btnSaveClient.Size = new System.Drawing.Size(180, 85);
             this.btnSaveClient.TabIndex = 17;
@@ -217,7 +218,7 @@
             // 
             // btnDeleteClient
             // 
-            this.btnDeleteClient.Location = new System.Drawing.Point(783, 586);
+            this.btnDeleteClient.Location = new System.Drawing.Point(538, 577);
             this.btnDeleteClient.Name = "btnDeleteClient";
             this.btnDeleteClient.Size = new System.Drawing.Size(182, 85);
             this.btnDeleteClient.TabIndex = 18;
@@ -362,12 +363,23 @@
             this.btnPaste.UseVisualStyleBackColor = true;
             this.btnPaste.Click += new System.EventHandler(this.btnPaste_Click);
             // 
+            // btnTXT
+            // 
+            this.btnTXT.Location = new System.Drawing.Point(754, 577);
+            this.btnTXT.Name = "btnTXT";
+            this.btnTXT.Size = new System.Drawing.Size(164, 85);
+            this.btnTXT.TabIndex = 23;
+            this.btnTXT.Text = "Export as txt";
+            this.btnTXT.UseVisualStyleBackColor = true;
+            this.btnTXT.Click += new System.EventHandler(this.btnTXT_Click);
+            // 
             // Client_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1180, 724);
             this.ContextMenuStrip = this.contextMenuStripXML;
+            this.Controls.Add(this.btnTXT);
             this.Controls.Add(this.btnPaste);
             this.Controls.Add(this.btnCopy);
             this.Controls.Add(this.lvClients);
@@ -439,5 +451,6 @@
         public System.Windows.Forms.ContextMenuStrip contextMenuStripXML;
         private System.Windows.Forms.Button btnCopy;
         private System.Windows.Forms.Button btnPaste;
+        private System.Windows.Forms.Button btnTXT;
     }
 }

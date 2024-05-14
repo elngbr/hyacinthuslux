@@ -347,7 +347,7 @@
             // 
             this.btnCopy.Location = new System.Drawing.Point(295, 413);
             this.btnCopy.Name = "btnCopy";
-            this.btnCopy.Size = new System.Drawing.Size(75, 23);
+            this.btnCopy.Size = new System.Drawing.Size(75, 28);
             this.btnCopy.TabIndex = 21;
             this.btnCopy.Text = "Copy";
             this.btnCopy.UseVisualStyleBackColor = true;
@@ -357,7 +357,7 @@
             // 
             this.btnPaste.Location = new System.Drawing.Point(376, 413);
             this.btnPaste.Name = "btnPaste";
-            this.btnPaste.Size = new System.Drawing.Size(75, 23);
+            this.btnPaste.Size = new System.Drawing.Size(75, 28);
             this.btnPaste.TabIndex = 22;
             this.btnPaste.Text = "Paste";
             this.btnPaste.UseVisualStyleBackColor = true;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -15,6 +16,9 @@ namespace hyacinthuslux
 {
     public partial class Client_Form : Form
     {
+        //Here we define a connection string
+        private const string ConnectionString = "Data Source=ClientDatabase.sqlite";
+
         ErrorProvider errorProvider = new ErrorProvider();
         private List<Client> clients = new List<Client>();
         public Client_Form()
@@ -27,6 +31,30 @@ namespace hyacinthuslux
             clients = new List<Client>();
         }
 
+        private void createClient(Client client)
+        {
+
+            string query = "INSERT INTO cLIENT (clientFirstName, clientLastName,clientEmail,clientAddress,clientPhoneNumber,clientLoyaltyPoints) values"
+            +"(@clientFirstName, @clientLastName,@clientEmail,@clientAddress,@clientPhoneNumber,@clientLoyaltyPoints);";
+
+            using(SQLiteConnection connection = new SQLiteConnection(ConnectionString))
+            {
+                connection.Open();
+                SQLiteCommand command = new SQLiteCommand(query, connection);
+                command.Parameters.AddWithValue("@clientFirstName", client.clientFirstName.ToString());
+                command.Parameters.AddWithValue("@clientLastName", client.clientLastName.ToString());
+                command.Parameters.AddWithValue("@clientEmail", client.clientEmail.ToString());
+                command.Parameters.AddWithValue("@clientAddress", client.clientAddress.ToString());
+                command.Parameters.AddWithValue("@clientPhoneNumber", client.clientPhoneNumber.ToString());
+                command.Parameters.AddWithValue("@clientLoyaltyPoints", client.clientLoyaltyPoints.ToString());
+
+                command.ExecuteNonQuery();
+
+
+
+
+            }
+        }
         private void lvClients_SelectedIndexChanged(object sender, EventArgs e)
         {
         //    if (lvClients.SelectedItems.Count > 0)
@@ -51,7 +79,9 @@ namespace hyacinthuslux
             clients.Add(_client);
             ResetForm();
             DisplayParticipants();
-            
+
+
+            createClient(_client);
 
         }
 

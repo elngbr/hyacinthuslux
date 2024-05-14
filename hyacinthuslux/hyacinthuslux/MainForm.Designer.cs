@@ -40,7 +40,7 @@
             this.addDeliveryBtn.Name = "addDeliveryBtn";
             this.addDeliveryBtn.Size = new System.Drawing.Size(167, 51);
             this.addDeliveryBtn.TabIndex = 2;
-            this.addDeliveryBtn.Text = "Add Delivery";
+            this.addDeliveryBtn.Text = "Add &Delivery";
             this.addDeliveryBtn.UseVisualStyleBackColor = true;
             // 
             // listView1
@@ -58,7 +58,7 @@
             this.addClientBtn.Name = "addClientBtn";
             this.addClientBtn.Size = new System.Drawing.Size(170, 51);
             this.addClientBtn.TabIndex = 4;
-            this.addClientBtn.Text = "Add Client";
+            this.addClientBtn.Text = "Add &Client";
             this.addClientBtn.UseVisualStyleBackColor = true;
             this.addClientBtn.Click += new System.EventHandler(this.addClientBtn_Click);
             // 
@@ -68,7 +68,7 @@
             this.btnAddProduct.Name = "btnAddProduct";
             this.btnAddProduct.Size = new System.Drawing.Size(156, 51);
             this.btnAddProduct.TabIndex = 5;
-            this.btnAddProduct.Text = "Add Product";
+            this.btnAddProduct.Text = "Add &Product";
             this.btnAddProduct.UseVisualStyleBackColor = true;
             this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 

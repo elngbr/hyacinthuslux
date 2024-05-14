@@ -124,5 +124,47 @@ namespace hyacinthuslux
                 cbTypeFlower.Text=selectedProduct.productType.ToString();
             }
         }
+
+        private void tbTitle_Validating(object sender, CancelEventArgs e)
+        {
+            if(String.IsNullOrEmpty(tbTitle.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(tbTitle, "It is mandatory to have a title!");
+
+            }
+
+            if (String.IsNullOrWhiteSpace(tbTitle.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(tbTitle, "It is mandatory to have a title!");
+
+            }
+
+            if(tbTitle.Text.Length <2) 
+            {
+                e.Cancel = true;
+                errorProvider.SetError(tbTitle, "Flower Name too short!");
+            }
+        }
+
+        private void tbPrice_Validating(object sender, CancelEventArgs e)
+        {
+            decimal price=decimal.Parse(tbPrice.Text);
+            if(price>600 || price <0)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(tbPrice, "Invalid price!");
+            }
+        }
+
+        private void numStock_Validating(object sender, CancelEventArgs e)
+        {
+            if(numStock.Value>100)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(numStock, "Stock too large!");
+            }
+        }
     }
 }

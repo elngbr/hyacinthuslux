@@ -98,6 +98,7 @@
             this.tbPrice.Name = "tbPrice";
             this.tbPrice.Size = new System.Drawing.Size(100, 22);
             this.tbPrice.TabIndex = 2;
+            this.tbPrice.Validating += new System.ComponentModel.CancelEventHandler(this.tbPrice_Validating);
             // 
             // tbTitle
             // 
@@ -105,6 +106,7 @@
             this.tbTitle.Name = "tbTitle";
             this.tbTitle.Size = new System.Drawing.Size(100, 22);
             this.tbTitle.TabIndex = 3;
+            this.tbTitle.Validating += new System.ComponentModel.CancelEventHandler(this.tbTitle_Validating);
             // 
             // cbTypeFlower
             // 
@@ -156,7 +158,7 @@
             this.btnDeleteProduct.Name = "btnDeleteProduct";
             this.btnDeleteProduct.Size = new System.Drawing.Size(114, 31);
             this.btnDeleteProduct.TabIndex = 10;
-            this.btnDeleteProduct.Text = "Delete";
+            this.btnDeleteProduct.Text = "&Delete";
             this.btnDeleteProduct.UseVisualStyleBackColor = true;
             this.btnDeleteProduct.Click += new System.EventHandler(this.btnDeleteProduct_Click);
             // 
@@ -166,7 +168,7 @@
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(120, 31);
             this.btnSave.TabIndex = 11;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "&Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -176,7 +178,7 @@
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(120, 31);
             this.btnAdd.TabIndex = 12;
-            this.btnAdd.Text = "Add";
+            this.btnAdd.Text = "&Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -196,6 +198,7 @@
             this.numStock.Name = "numStock";
             this.numStock.Size = new System.Drawing.Size(120, 22);
             this.numStock.TabIndex = 14;
+            this.numStock.Validating += new System.ComponentModel.CancelEventHandler(this.numStock_Validating);
             // 
             // Product_Form
             // 

@@ -272,11 +272,10 @@ namespace hyacinthuslux
         private void numLoy_Validating(object sender, CancelEventArgs e)
         {
 
-            if (numLoy.Value > 100)
+            if (numLoy.Value > 99)
             {
                 e.Cancel = true;
-                errorProvider.SetError(numLoy, "Invalid Loyalty points.");
-
+                MessageBox.Show("Invalid Loyalty points.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

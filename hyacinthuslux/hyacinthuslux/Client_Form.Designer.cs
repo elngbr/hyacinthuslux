@@ -50,9 +50,9 @@
             this.FirstName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.LastName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.email = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Address = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Phone = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.LoyaltyPoints = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Address = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.numId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLoy)).BeginInit();
             this.SuspendLayout();
@@ -186,7 +186,7 @@
             this.bntAddClient.Name = "bntAddClient";
             this.bntAddClient.Size = new System.Drawing.Size(196, 85);
             this.bntAddClient.TabIndex = 16;
-            this.bntAddClient.Text = "Add";
+            this.bntAddClient.Text = "&Add";
             this.bntAddClient.UseVisualStyleBackColor = true;
             this.bntAddClient.Click += new System.EventHandler(this.bntAdd_Click);
             // 
@@ -196,7 +196,7 @@
             this.btnSaveClient.Name = "btnSaveClient";
             this.btnSaveClient.Size = new System.Drawing.Size(180, 85);
             this.btnSaveClient.TabIndex = 17;
-            this.btnSaveClient.Text = "Save";
+            this.btnSaveClient.Text = "&Save";
             this.btnSaveClient.UseVisualStyleBackColor = true;
             this.btnSaveClient.Click += new System.EventHandler(this.btnSaveClient_Click);
             // 
@@ -206,7 +206,7 @@
             this.btnDeleteClient.Name = "btnDeleteClient";
             this.btnDeleteClient.Size = new System.Drawing.Size(182, 85);
             this.btnDeleteClient.TabIndex = 18;
-            this.btnDeleteClient.Text = "Delete";
+            this.btnDeleteClient.Text = "&Delete";
             this.btnDeleteClient.UseVisualStyleBackColor = true;
             this.btnDeleteClient.Click += new System.EventHandler(this.btnDeleteClient_Click);
             // 
@@ -250,6 +250,11 @@
             this.email.Text = "email";
             this.email.Width = 120;
             // 
+            // Address
+            // 
+            this.Address.Text = "Address";
+            this.Address.Width = 200;
+            // 
             // Phone
             // 
             this.Phone.Text = "Phone";
@@ -259,12 +264,6 @@
             // 
             this.LoyaltyPoints.Text = "LoyaltyPoints";
             this.LoyaltyPoints.Width = 120;
-            // 
-            // Address
-            // 
-            this.Address.DisplayIndex = 4;
-            this.Address.Text = "Address";
-            this.Address.Width = 200;
             // 
             // Client_Form
             // 

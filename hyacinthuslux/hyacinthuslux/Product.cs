@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace hyacinthuslux
 {
 
-
+    [Serializable]
 
     public class Product : ICloneable
     {

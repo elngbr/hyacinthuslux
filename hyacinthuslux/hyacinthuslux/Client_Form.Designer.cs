@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tbFirstName = new System.Windows.Forms.TextBox();
             this.tbPhoneNumber = new System.Windows.Forms.TextBox();
             this.tbEmail = new System.Windows.Forms.TextBox();
@@ -53,13 +54,24 @@
             this.Address = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Phone = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.LoyaltyPoints = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuBinClient = new System.Windows.Forms.ToolStripMenuItem();
+            this.serializeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deserializeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStripXML = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.serializeXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deserializeXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnCopy = new System.Windows.Forms.Button();
+            this.btnPaste = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLoy)).BeginInit();
+            this.menuStrip1.SuspendLayout();
+            this.contextMenuStripXML.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbFirstName
             // 
-            this.tbFirstName.Location = new System.Drawing.Point(136, 358);
+            this.tbFirstName.Location = new System.Drawing.Point(136, 413);
             this.tbFirstName.Multiline = true;
             this.tbFirstName.Name = "tbFirstName";
             this.tbFirstName.Size = new System.Drawing.Size(144, 22);
@@ -68,15 +80,18 @@
             // 
             // tbPhoneNumber
             // 
-            this.tbPhoneNumber.Location = new System.Drawing.Point(783, 410);
+            this.tbPhoneNumber.Location = new System.Drawing.Point(783, 455);
             this.tbPhoneNumber.Name = "tbPhoneNumber";
             this.tbPhoneNumber.Size = new System.Drawing.Size(152, 22);
             this.tbPhoneNumber.TabIndex = 5;
+            this.tbPhoneNumber.DragDrop += new System.Windows.Forms.DragEventHandler(this.tbPhoneNumber_DragDrop);
+            this.tbPhoneNumber.DragEnter += new System.Windows.Forms.DragEventHandler(this.tbPhoneNumber_DragEnter);
+            this.tbPhoneNumber.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tbPhoneNumber_MouseDown);
             this.tbPhoneNumber.Validating += new System.ComponentModel.CancelEventHandler(this.tbPhoneNumber_Validating);
             // 
             // tbEmail
             // 
-            this.tbEmail.Location = new System.Drawing.Point(783, 358);
+            this.tbEmail.Location = new System.Drawing.Point(783, 419);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(152, 22);
             this.tbEmail.TabIndex = 3;
@@ -84,7 +99,7 @@
             // 
             // tbAddress
             // 
-            this.tbAddress.Location = new System.Drawing.Point(330, 514);
+            this.tbAddress.Location = new System.Drawing.Point(317, 549);
             this.tbAddress.Name = "tbAddress";
             this.tbAddress.Size = new System.Drawing.Size(447, 22);
             this.tbAddress.TabIndex = 4;
@@ -93,7 +108,7 @@
             // 
             // tbLastName
             // 
-            this.tbLastName.Location = new System.Drawing.Point(136, 410);
+            this.tbLastName.Location = new System.Drawing.Point(136, 455);
             this.tbLastName.Name = "tbLastName";
             this.tbLastName.Size = new System.Drawing.Size(144, 22);
             this.tbLastName.TabIndex = 2;
@@ -103,7 +118,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(58, 361);
+            this.label1.Location = new System.Drawing.Point(49, 410);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 16);
             this.label1.TabIndex = 7;
@@ -112,7 +127,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(58, 410);
+            this.label2.Location = new System.Drawing.Point(49, 461);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 16);
             this.label2.TabIndex = 8;
@@ -121,7 +136,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(97, 453);
+            this.label3.Location = new System.Drawing.Point(103, 506);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(18, 16);
             this.label3.TabIndex = 9;
@@ -130,7 +145,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(724, 358);
+            this.label4.Location = new System.Drawing.Point(717, 419);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 16);
             this.label4.TabIndex = 10;
@@ -139,7 +154,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(242, 514);
+            this.label5.Location = new System.Drawing.Point(244, 549);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(57, 16);
             this.label5.TabIndex = 11;
@@ -148,7 +163,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(680, 410);
+            this.label6.Location = new System.Drawing.Point(667, 455);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(97, 16);
             this.label6.TabIndex = 12;
@@ -157,7 +172,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(687, 453);
+            this.label7.Location = new System.Drawing.Point(667, 500);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(90, 16);
             this.label7.TabIndex = 13;
@@ -165,7 +180,7 @@
             // 
             // numId
             // 
-            this.numId.Location = new System.Drawing.Point(136, 453);
+            this.numId.Location = new System.Drawing.Point(136, 504);
             this.numId.Name = "numId";
             this.numId.Size = new System.Drawing.Size(144, 22);
             this.numId.TabIndex = 0;
@@ -173,7 +188,7 @@
             // 
             // numLoy
             // 
-            this.numLoy.Location = new System.Drawing.Point(783, 451);
+            this.numLoy.Location = new System.Drawing.Point(783, 500);
             this.numLoy.Name = "numLoy";
             this.numLoy.Size = new System.Drawing.Size(152, 22);
             this.numLoy.TabIndex = 6;
@@ -182,7 +197,7 @@
             // 
             // bntAddClient
             // 
-            this.bntAddClient.Location = new System.Drawing.Point(136, 559);
+            this.bntAddClient.Location = new System.Drawing.Point(122, 586);
             this.bntAddClient.Name = "bntAddClient";
             this.bntAddClient.Size = new System.Drawing.Size(196, 85);
             this.bntAddClient.TabIndex = 16;
@@ -192,7 +207,7 @@
             // 
             // btnSaveClient
             // 
-            this.btnSaveClient.Location = new System.Drawing.Point(457, 559);
+            this.btnSaveClient.Location = new System.Drawing.Point(460, 586);
             this.btnSaveClient.Name = "btnSaveClient";
             this.btnSaveClient.Size = new System.Drawing.Size(180, 85);
             this.btnSaveClient.TabIndex = 17;
@@ -202,7 +217,7 @@
             // 
             // btnDeleteClient
             // 
-            this.btnDeleteClient.Location = new System.Drawing.Point(783, 559);
+            this.btnDeleteClient.Location = new System.Drawing.Point(783, 586);
             this.btnDeleteClient.Name = "btnDeleteClient";
             this.btnDeleteClient.Size = new System.Drawing.Size(182, 85);
             this.btnDeleteClient.TabIndex = 18;
@@ -220,9 +235,10 @@
             this.Address,
             this.Phone,
             this.LoyaltyPoints});
+            this.lvClients.ContextMenuStrip = this.contextMenuStripXML;
             this.lvClients.FullRowSelect = true;
             this.lvClients.HideSelection = false;
-            this.lvClients.Location = new System.Drawing.Point(12, 12);
+            this.lvClients.Location = new System.Drawing.Point(12, 88);
             this.lvClients.Name = "lvClients";
             this.lvClients.Size = new System.Drawing.Size(1156, 304);
             this.lvClients.TabIndex = 19;
@@ -265,11 +281,95 @@
             this.LoyaltyPoints.Text = "LoyaltyPoints";
             this.LoyaltyPoints.Width = 120;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuBinClient});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1180, 28);
+            this.menuStrip1.TabIndex = 20;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // toolStripMenuBinClient
+            // 
+            this.toolStripMenuBinClient.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.serializeToolStripMenuItem,
+            this.deserializeToolStripMenuItem});
+            this.toolStripMenuBinClient.Name = "toolStripMenuBinClient";
+            this.toolStripMenuBinClient.Size = new System.Drawing.Size(124, 24);
+            this.toolStripMenuBinClient.Text = "Serialize Binary";
+            // 
+            // serializeToolStripMenuItem
+            // 
+            this.serializeToolStripMenuItem.Name = "serializeToolStripMenuItem";
+            this.serializeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.serializeToolStripMenuItem.Text = "Serialize";
+            this.serializeToolStripMenuItem.Click += new System.EventHandler(this.serializeToolStripMenuItem_Click);
+            // 
+            // deserializeToolStripMenuItem
+            // 
+            this.deserializeToolStripMenuItem.Name = "deserializeToolStripMenuItem";
+            this.deserializeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.deserializeToolStripMenuItem.Text = "Deserialize";
+            this.deserializeToolStripMenuItem.Click += new System.EventHandler(this.deserializeToolStripMenuItem_Click);
+            // 
+            // contextMenuStripXML
+            // 
+            this.contextMenuStripXML.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStripXML.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.serializeXMLToolStripMenuItem,
+            this.deserializeXMLToolStripMenuItem});
+            this.contextMenuStripXML.Name = "contextMenuStrip1";
+            this.contextMenuStripXML.Size = new System.Drawing.Size(185, 52);
+            this.contextMenuStripXML.TabStop = true;
+            this.contextMenuStripXML.Text = "Serialize XML";
+            this.contextMenuStripXML.UseWaitCursor = true;
+            this.contextMenuStripXML.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStripXML_Opening);
+            // 
+            // serializeXMLToolStripMenuItem
+            // 
+            this.serializeXMLToolStripMenuItem.Name = "serializeXMLToolStripMenuItem";
+            this.serializeXMLToolStripMenuItem.Size = new System.Drawing.Size(184, 24);
+            this.serializeXMLToolStripMenuItem.Text = "Serialize XML";
+            this.serializeXMLToolStripMenuItem.Click += new System.EventHandler(this.serializeXMLToolStripMenuItem_Click);
+            // 
+            // deserializeXMLToolStripMenuItem
+            // 
+            this.deserializeXMLToolStripMenuItem.Name = "deserializeXMLToolStripMenuItem";
+            this.deserializeXMLToolStripMenuItem.Size = new System.Drawing.Size(184, 24);
+            this.deserializeXMLToolStripMenuItem.Text = "Deserialize XML";
+            this.deserializeXMLToolStripMenuItem.Click += new System.EventHandler(this.deserializeXMLToolStripMenuItem_Click);
+            // 
+            // btnCopy
+            // 
+            this.btnCopy.Location = new System.Drawing.Point(295, 413);
+            this.btnCopy.Name = "btnCopy";
+            this.btnCopy.Size = new System.Drawing.Size(75, 23);
+            this.btnCopy.TabIndex = 21;
+            this.btnCopy.Text = "Copy";
+            this.btnCopy.UseVisualStyleBackColor = true;
+            this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
+            // 
+            // btnPaste
+            // 
+            this.btnPaste.Location = new System.Drawing.Point(376, 413);
+            this.btnPaste.Name = "btnPaste";
+            this.btnPaste.Size = new System.Drawing.Size(75, 23);
+            this.btnPaste.TabIndex = 22;
+            this.btnPaste.Text = "Paste";
+            this.btnPaste.UseVisualStyleBackColor = true;
+            this.btnPaste.Click += new System.EventHandler(this.btnPaste_Click);
+            // 
             // Client_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1180, 724);
+            this.ContextMenuStrip = this.contextMenuStripXML;
+            this.Controls.Add(this.btnPaste);
+            this.Controls.Add(this.btnCopy);
             this.Controls.Add(this.lvClients);
             this.Controls.Add(this.btnDeleteClient);
             this.Controls.Add(this.btnSaveClient);
@@ -288,11 +388,16 @@
             this.Controls.Add(this.tbEmail);
             this.Controls.Add(this.tbPhoneNumber);
             this.Controls.Add(this.tbFirstName);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Client_Form";
             this.Text = "Client_Form";
             this.Load += new System.EventHandler(this.Client_Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLoy)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.contextMenuStripXML.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -325,5 +430,14 @@
         private System.Windows.Forms.ColumnHeader Phone;
         private System.Windows.Forms.ColumnHeader LoyaltyPoints;
         private System.Windows.Forms.ColumnHeader Address;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuBinClient;
+        private System.Windows.Forms.ToolStripMenuItem serializeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deserializeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem serializeXMLToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deserializeXMLToolStripMenuItem;
+        public System.Windows.Forms.ContextMenuStrip contextMenuStripXML;
+        private System.Windows.Forms.Button btnCopy;
+        private System.Windows.Forms.Button btnPaste;
     }
 }

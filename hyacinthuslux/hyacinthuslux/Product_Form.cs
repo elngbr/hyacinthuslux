@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace hyacinthuslux
 {
@@ -164,6 +167,76 @@ namespace hyacinthuslux
             {
                 e.Cancel = true;
                 errorProvider.SetError(numStock, "Stock too large!");
+            }
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SerializeBinary_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog svf = new SaveFileDialog();
+
+            if (svf.ShowDialog() == DialogResult.OK)
+            {
+                using (FileStream fs = File.Create(svf.FileName))
+                {
+                    BinaryFormatter bf = new BinaryFormatter();
+                    bf.Serialize(fs, products);
+                }
+            }
+        }
+
+        private void DeserializeBinary_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                using (FileStream fs = File.OpenRead(ofd.FileName))
+                {
+                    BinaryFormatter bf = new BinaryFormatter();
+                    products = (List<Product>)bf.Deserialize(fs);
+                    DisplayProducts();
+
+                }
+            }
+        }
+
+        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog svf = new SaveFileDialog();
+            if (svf.ShowDialog() == DialogResult.OK)
+            {
+                using (FileStream fs = File.Create(svf.FileName))
+                {
+                    XmlSerializer ser = new XmlSerializer(typeof(List<Product>));
+
+                    ser.Serialize(fs, products);
+                }
+            }
+        }
+
+        private void toolStripStatusLabel2_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                using (FileStream fs = File.OpenRead(ofd.FileName))
+                {
+                    XmlSerializer ser = new XmlSerializer(typeof(List<Product>));
+                    products = (List<Product>)ser.Deserialize(fs);
+                    DisplayProducts();
+
+
+                }
             }
         }
     }

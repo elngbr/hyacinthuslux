@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace hyacinthuslux
 {
+    [Serializable]
     public class Client:IComparable<Client>
     {
         public int clientId { get; set; }
@@ -19,6 +20,16 @@ namespace hyacinthuslux
 
         public Client(int Id, string fname, string lname, string email, string address, string phonenumber, double loyaltyPoints)
         {
+
+            if (address .Contains( "Florida"))
+            {
+                throw new InvalidAddressException(address);
+            }
+
+            if(phonenumber=="0787823221")
+            {
+                throw new Exception("Elena's phone number is not a valid phone number!");
+            }
             this.clientAddress = address;
             this.clientId = Id;
             this.clientFirstName = fname;

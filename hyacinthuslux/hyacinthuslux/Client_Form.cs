@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace hyacinthuslux
 {
@@ -276,6 +279,105 @@ namespace hyacinthuslux
             {
                 e.Cancel = true;
                 MessageBox.Show("Invalid Loyalty points.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void serializeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog svf = new SaveFileDialog();
+
+            if (svf.ShowDialog() == DialogResult.OK)
+            {
+                using (FileStream fs = File.Create(svf.FileName))
+                {
+                    BinaryFormatter bf = new BinaryFormatter();
+                    bf.Serialize(fs, clients);
+
+                }
+            }
+        }
+
+        private void deserializeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                using (FileStream fs = File.OpenRead(ofd.FileName))
+                {
+                    BinaryFormatter bf = new BinaryFormatter();
+                    clients = (List<Client>)bf.Deserialize(fs);
+                    DisplayParticipants();
+                }
+            }
+        }
+
+        private void contextMenuStripXML_Opening(object sender, CancelEventArgs e)
+        {
+            
+        }
+
+        private void serializeXMLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog svf = new SaveFileDialog();
+            if (svf.ShowDialog() == DialogResult.OK)
+            {
+                using (FileStream fs = File.Create(svf.FileName))
+                {
+                    XmlSerializer ser = new XmlSerializer(typeof(List<Client>));
+
+                    ser.Serialize(fs, clients);
+                }
+            }
+        }
+
+        private void deserializeXMLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                using (FileStream fs = File.OpenRead(ofd.FileName))
+                {
+                    XmlSerializer ser = new XmlSerializer(typeof(List<Client>));
+                    clients = (List<Client>)ser.Deserialize(fs);
+                    DisplayParticipants();
+
+
+                }
+            }
+        }
+
+        private void btnCopy_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(tbFirstName.Text);
+        }
+
+        private void btnPaste_Click(object sender, EventArgs e)
+        {
+            if(Clipboard.ContainsText())
+            {
+                tbFirstName.Text= Clipboard.GetText();
+            }
+        }
+
+        private void tbPhoneNumber_MouseDown(object sender, MouseEventArgs e)
+        {
+            tbPhoneNumber.DoDragDrop(tbPhoneNumber.Text, DragDropEffects.Copy);
+        }
+
+        private void tbPhoneNumber_DragEnter(object sender, DragEventArgs e)
+        {
+            if(e.Data.GetDataPresent(DataFormats.Text))
+            {
+                e.Effect= DragDropEffects.Copy;
+            }
+        }
+
+        private void tbPhoneNumber_DragDrop(object sender, DragEventArgs e)
+        {
+            if(e.Data.GetDataPresent(DataFormats.Text))
+            {
+                tbPhoneNumber.Text=(string)e.Data.GetData(DataFormats.Text);
             }
         }
     }

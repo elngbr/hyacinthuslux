@@ -54,20 +54,20 @@
             this.Address = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Phone = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.LoyaltyPoints = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contextMenuStripXML = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.serializeXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deserializeXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuBinClient = new System.Windows.Forms.ToolStripMenuItem();
             this.serializeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deserializeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStripXML = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.serializeXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deserializeXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCopy = new System.Windows.Forms.Button();
             this.btnPaste = new System.Windows.Forms.Button();
             this.btnTXT = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLoy)).BeginInit();
-            this.menuStrip1.SuspendLayout();
             this.contextMenuStripXML.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbFirstName
@@ -282,40 +282,6 @@
             this.LoyaltyPoints.Text = "LoyaltyPoints";
             this.LoyaltyPoints.Width = 120;
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuBinClient});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1180, 28);
-            this.menuStrip1.TabIndex = 20;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // toolStripMenuBinClient
-            // 
-            this.toolStripMenuBinClient.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.serializeToolStripMenuItem,
-            this.deserializeToolStripMenuItem});
-            this.toolStripMenuBinClient.Name = "toolStripMenuBinClient";
-            this.toolStripMenuBinClient.Size = new System.Drawing.Size(124, 24);
-            this.toolStripMenuBinClient.Text = "Serialize Binary";
-            // 
-            // serializeToolStripMenuItem
-            // 
-            this.serializeToolStripMenuItem.Name = "serializeToolStripMenuItem";
-            this.serializeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.serializeToolStripMenuItem.Text = "Serialize";
-            this.serializeToolStripMenuItem.Click += new System.EventHandler(this.serializeToolStripMenuItem_Click);
-            // 
-            // deserializeToolStripMenuItem
-            // 
-            this.deserializeToolStripMenuItem.Name = "deserializeToolStripMenuItem";
-            this.deserializeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.deserializeToolStripMenuItem.Text = "Deserialize";
-            this.deserializeToolStripMenuItem.Click += new System.EventHandler(this.deserializeToolStripMenuItem_Click);
-            // 
             // contextMenuStripXML
             // 
             this.contextMenuStripXML.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -342,6 +308,40 @@
             this.deserializeXMLToolStripMenuItem.Size = new System.Drawing.Size(184, 24);
             this.deserializeXMLToolStripMenuItem.Text = "Deserialize XML";
             this.deserializeXMLToolStripMenuItem.Click += new System.EventHandler(this.deserializeXMLToolStripMenuItem_Click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuBinClient});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1180, 28);
+            this.menuStrip1.TabIndex = 20;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // toolStripMenuBinClient
+            // 
+            this.toolStripMenuBinClient.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.serializeToolStripMenuItem,
+            this.deserializeToolStripMenuItem});
+            this.toolStripMenuBinClient.Name = "toolStripMenuBinClient";
+            this.toolStripMenuBinClient.Size = new System.Drawing.Size(124, 24);
+            this.toolStripMenuBinClient.Text = "Serialize Binary";
+            // 
+            // serializeToolStripMenuItem
+            // 
+            this.serializeToolStripMenuItem.Name = "serializeToolStripMenuItem";
+            this.serializeToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            this.serializeToolStripMenuItem.Text = "Serialize";
+            this.serializeToolStripMenuItem.Click += new System.EventHandler(this.serializeToolStripMenuItem_Click);
+            // 
+            // deserializeToolStripMenuItem
+            // 
+            this.deserializeToolStripMenuItem.Name = "deserializeToolStripMenuItem";
+            this.deserializeToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            this.deserializeToolStripMenuItem.Text = "Deserialize";
+            this.deserializeToolStripMenuItem.Click += new System.EventHandler(this.deserializeToolStripMenuItem_Click);
             // 
             // btnCopy
             // 
@@ -407,9 +407,9 @@
             this.Load += new System.EventHandler(this.Client_Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLoy)).EndInit();
+            this.contextMenuStripXML.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.contextMenuStripXML.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

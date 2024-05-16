@@ -24,11 +24,14 @@ namespace hyacinthuslux
         public Client_Form()
         {
             InitializeComponent();
+            clients = new List<Client>();
         }
 
         private void Client_Form_Load(object sender, EventArgs e)
         {
-            clients = new List<Client>();
+            //clients = new List<Client>();
+            ReadClient();
+            DisplayParticipants();
         }
 
         private void createClient(Client client)
@@ -55,6 +58,51 @@ namespace hyacinthuslux
 
             }
         }
+
+        private void deleteClient(int id)
+        {
+            string query = "DELETE FROM Client where clientId=@id";
+
+            using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
+            {
+                connection.Open();
+                SQLiteCommand command = new SQLiteCommand(query, connection);
+
+                command.Parameters.AddWithValue("@id", id);
+                command.ExecuteNonQuery();
+
+
+
+
+            }
+        }
+ 
+        private void ReadClient()
+        {
+            clients.Clear();
+            string query = "SELECT * FROM Client;";
+            using (SQLiteConnection connection=new SQLiteConnection(ConnectionString))
+            {
+                connection.Open();
+                SQLiteCommand command=new SQLiteCommand(query, connection);
+                using ( var reader =command.ExecuteReader())
+                {
+                    while(reader.Read())
+                    {
+                        long id = (long)reader["clientId"];
+                        string firstName = (string)reader["clientFirstName"];
+                        string lastName = (string)reader["clientLastName"];
+                        string email = (string)reader["clientEmail"];
+                        string address = (string)reader["clientAddress"];
+                        string phone = (String)reader["clientPhoneNumber"];
+                        long loyalty = (long)reader["clientLoyaltyPoints"];
+                        Client client = new Client((int)id, firstName,lastName,email,address,phone,loyalty);
+                        clients.Add(client);
+                    }
+                }
+            }
+        }
+
         private void lvClients_SelectedIndexChanged(object sender, EventArgs e)
         {
         //    if (lvClients.SelectedItems.Count > 0)
@@ -76,12 +124,15 @@ namespace hyacinthuslux
         {
             Client _client = 
                 new Client((int)numId.Value, tbFirstName.Text, tbLastName.Text, tbEmail.Text, tbAddress.Text, tbPhoneNumber.Text, (int)numLoy.Value);
-            clients.Add(_client);
-            ResetForm();
-            DisplayParticipants();
-
-
+            //clients.Add(_client);
             createClient(_client);
+            ResetForm();
+            ReadClient();
+           
+            DisplayParticipants();
+            
+
+            //createClient(_client);
 
         }
 
@@ -113,6 +164,31 @@ namespace hyacinthuslux
             }
         }
 
+
+        private void updateClient(Client client)
+        {
+            string query = "UPDATE Client SET clientFirstName=@firstName," +
+                "clientLastName=@lastName, clientEmail=@email, clientAddress=@address," +
+                " clientPhoneNumber=@phone, clientLoyaltyPoints=@points" +
+                " where clientId=@id";
+
+            using (SQLiteConnection connecction=new SQLiteConnection(ConnectionString))
+            {
+                connecction.Open();
+                SQLiteCommand command=new SQLiteCommand(query, connecction);
+                command.Parameters.AddWithValue("@id", client.clientId);
+                command.Parameters.AddWithValue("@firstName", client.clientFirstName);
+                command.Parameters.AddWithValue("@lastName", client.clientLastName);
+                command.Parameters.AddWithValue("@address", client.clientAddress);
+                command.Parameters.AddWithValue("@phone", client.clientPhoneNumber);
+                command.Parameters.AddWithValue("@points", client.clientLoyaltyPoints);
+                command.Parameters.AddWithValue("@email", client.clientEmail);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+
         private void btnSaveClient_Click(object sender, EventArgs e)
         {
             if(lvClients.SelectedItems.Count>0)
@@ -134,6 +210,7 @@ namespace hyacinthuslux
                 lvClients.SelectedItems[0].SubItems[4].Text = tbAddress.Text;
                 lvClients.SelectedItems[0].SubItems[5].Text = Phone.Text;
                 lvClients.SelectedItems[0].SubItems[6].Text = numLoy.Value.ToString();
+                updateClient(selectedClient);
 
                 ResetForm();
             }
@@ -144,10 +221,10 @@ namespace hyacinthuslux
             if (lvClients.SelectedItems.Count > 0)
             {
                 var _client = lvClients.SelectedItems[0].Tag as Client;
-
-
-                clients.Remove(_client);
-                ResetForm();
+                deleteClient(_client.clientId);
+                ReadClient();
+                //clients.Remove(_client);
+                
                 DisplayParticipants();
 
             }
@@ -167,6 +244,7 @@ namespace hyacinthuslux
                 tbAddress.Text = selectedClient.clientAddress;
                 tbPhoneNumber.Text = selectedClient.clientPhoneNumber;
                 numLoy.Value = (decimal)selectedClient.clientLoyaltyPoints;
+                updateClient(selectedClient);
             }
         }
 

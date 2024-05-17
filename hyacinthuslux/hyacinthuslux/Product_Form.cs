@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -16,18 +17,70 @@ namespace hyacinthuslux
 {
     public partial class Product_Form : Form
     {
+        private const string ConnectionString = "Data Source=ClientDatabase.sqlite";
+
         public Product_Form()
         {
             InitializeComponent();
+            products = new List<Product>();
         }
         ErrorProvider errorProvider =new ErrorProvider();
         List<Product> products = new List<Product>();
        
 
+        private void createProduct(Product product)
+        {
+            string query = "INSERT INTO Product (productName, productType, productStock, productPrice, isAvailable) values " +
+                " (@name, @type, @stock, @price, @availability);";
+
+            using(SQLiteConnection connection = new SQLiteConnection(ConnectionString))
+            {
+                connection.Open();
+                SQLiteCommand command=new SQLiteCommand(query,connection);
+                command.Parameters.AddWithValue("@name", product.productName);
+                command.Parameters.AddWithValue("@type", product.productType.ToString());
+                command.Parameters.AddWithValue("@stock", product.productStock);
+                command.Parameters.AddWithValue("@price", product.productPrice);
+                command.Parameters.AddWithValue("@availability", product.IsAvailable);
+
+                command.ExecuteNonQuery();
+
+            }
+        }
+
+
+        private void readProduct()
+        {
+            string query = "Select* from Product;";
+
+            using(SQLiteConnection connection=new SQLiteConnection(ConnectionString))
+            {
+                connection.Open();
+                SQLiteCommand command = new SQLiteCommand(query, connection);
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while(reader.Read())
+                    {
+                        string name = (string)reader["productName"];
+                        long price = (long)reader["productPrice"];
+                        long stock = (long)reader["productStock"];
+                        bool av = bool.TryParse(reader["isAvailable"].ToString(), out av);
+                        FlowerEnum f = Enum.TryParse(reader["productType"].ToString(), out FlowerEnum parsedEnum) ? parsedEnum : FlowerEnum.Default;
+
+
+                        Product product =new Product(price, name, av,f, (int)stock);
+                        products.Add(product);
+                    }
+                }
+            }
+        }
         private void Product_Form_Load(object sender, EventArgs e)
         {
-            products=new List<Product>();
+            
             cbTypeFlower.DataSource=  Enum.GetValues(typeof(FlowerEnum));
+            readProduct();
+            DisplayProducts();
 
         }
 
@@ -40,6 +93,8 @@ namespace hyacinthuslux
             products.Add(_product);
             ResetForm();
             DisplayProducts();
+
+            createProduct(_product);
         }
 
 

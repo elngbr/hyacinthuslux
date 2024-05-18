@@ -240,5 +240,34 @@ namespace hyacinthuslux
                 MessageBox.Show("Please select a client and enter a delivery location.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void buttonDeleteProd_Click(object sender, EventArgs e)
+        {
+            
+            if (dgvProductsForAnOrder.SelectedRows.Count > 0)
+            {
+               
+                int selectedIndex = dgvProductsForAnOrder.SelectedRows[0].Index;
+
+                
+                dgvProductsForAnOrder.Rows.RemoveAt(selectedIndex);
+
+               
+                if (_delivery.DeliveryProducts.Count > selectedIndex && _delivery.deliveryQuantities.Count > selectedIndex)
+                {
+                    _delivery.DeliveryProducts.RemoveAt(selectedIndex);
+                    _delivery.deliveryQuantities.RemoveAt(selectedIndex);
+                }
+                else
+                {
+                    MessageBox.Show("An error occurred while deleting the product. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a row to delete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }

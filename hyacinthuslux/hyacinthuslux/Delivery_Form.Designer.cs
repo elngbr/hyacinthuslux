@@ -168,6 +168,7 @@
             this.buttonDeleteProd.TabIndex = 17;
             this.buttonDeleteProd.Text = "Delete ProdOrder";
             this.buttonDeleteProd.UseVisualStyleBackColor = true;
+            this.buttonDeleteProd.Click += new System.EventHandler(this.buttonDeleteProd_Click);
             // 
             // buttonSaveOrder
             // 

@@ -65,6 +65,7 @@
     <Compile Include="Delivery_Form.Designer.cs">
       <DependentUpon>Delivery_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="EnumCourier.cs" />
     <Compile Include="EnumFlower.cs" />
     <Compile Include="InvalidAddressException.cs" />
     <Compile Include="MainForm.cs">

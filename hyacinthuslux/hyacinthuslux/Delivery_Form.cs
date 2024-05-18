@@ -20,12 +20,84 @@ namespace hyacinthuslux
                 DeliveryProducts = new List<Product>(),
                 deliveryQuantities = new List<int>()
             };
+
+            comboBoxCourierMethod.SelectedIndexChanged += ComboBoxCourierMethod_SelectedIndexChanged;
         }
 
         private void Delivery_Form_Load(object sender, EventArgs e)
         {
             PopulateComboBoxClients();
             PopulateComboBoxProducts();
+            PopulateComboBoxCourierMethods();
+
+            if (_delivery != null && _delivery.DeliveryClient != null)
+            {
+                dtpDeliveryDate.Value = _delivery.deliveryDate;
+                tbLocationDel.Text = _delivery.deliveryLocation;
+                comboBoxClients.Text = _delivery.DeliveryClient.clientLastName.ToString();
+            }
+
+            // If it's a new delivery, set the initial total value based on the selected courier method
+            if (_delivery.deliveryLocation == null)
+            {
+                EnumCourier.CourierEnum val = (EnumCourier.CourierEnum)Enum.Parse(typeof(EnumCourier.CourierEnum), comboBoxCourierMethod.Text);
+                _delivery.deliveryMethod = val;
+                UpdateTotalValue();
+            }
+        }
+
+        private void ComboBoxCourierMethod_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxCourierMethod.SelectedItem != null)
+            {
+                EnumCourier.CourierEnum val = (EnumCourier.CourierEnum)Enum.Parse(typeof(EnumCourier.CourierEnum), comboBoxCourierMethod.SelectedItem.ToString());
+                _delivery.deliveryMethod = val;
+                UpdateTotalValue();
+            }
+        }
+
+        private void buttonOk_Click(object sender, EventArgs e)
+        {
+            if (_delivery != null)
+            {
+                if (comboBoxClients.SelectedItem != null)
+                {
+                    int clientId = (int)comboBoxClients.SelectedItem;
+                    _delivery.DeliveryClient = SubtractClient(clientId);
+
+                    if (!string.IsNullOrWhiteSpace(tbLocationDel.Text))
+                    {
+                        _delivery.deliveryLocation = tbLocationDel.Text;
+                        _delivery.deliveryDate = dtpDeliveryDate.Value;
+
+                        MessageBox.Show("Delivery information updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please enter a delivery location.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select a client.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void PopulateComboBoxCourierMethods()
+        {
+            comboBoxCourierMethod.Items.Clear();
+            Array courierValues = Enum.GetValues(typeof(EnumCourier.CourierEnum));
+            foreach (EnumCourier.CourierEnum courier in courierValues)
+            {
+                comboBoxCourierMethod.Items.Add(courier.ToString());
+            }
+
+            if (comboBoxCourierMethod.Items.Count > 0)
+            {
+                comboBoxCourierMethod.SelectedIndex = 0;
+            }
         }
 
         private void PopulateComboBoxProducts()
@@ -81,14 +153,13 @@ namespace hyacinthuslux
         {
             comboBoxProducts.SelectedIndex = 0;
             numQuantity.Value = 0;
-            _editIndex = -1; // Reset edit index
+            _editIndex = -1;
         }
 
         private void btnAddProdOrder_Click(object sender, EventArgs e)
         {
             if (_editIndex == -1)
             {
-                // Add new product and quantity
                 if (comboBoxProducts.SelectedItem != null && numQuantity.Value > 0)
                 {
                     string productName = (string)comboBoxProducts.SelectedItem;
@@ -100,11 +171,11 @@ namespace hyacinthuslux
 
                     ResetFormForProducts();
                     DisplayProducts();
+                    UpdateTotalValue();
                 }
             }
             else
             {
-                // Update existing product and quantity
                 if (comboBoxProducts.SelectedItem != null && numQuantity.Value > 0)
                 {
                     string productName = (string)comboBoxProducts.SelectedItem;
@@ -116,6 +187,7 @@ namespace hyacinthuslux
 
                     ResetFormForProducts();
                     DisplayProducts();
+                    UpdateTotalValue();
                 }
             }
         }
@@ -159,7 +231,6 @@ namespace hyacinthuslux
             return null;
         }
 
-
         private Client SubtractClient(int clientId)
         {
             string query = "SELECT * FROM Client WHERE clientId = @clientId";
@@ -172,15 +243,18 @@ namespace hyacinthuslux
                 {
                     if (reader.Read())
                     {
+                        long clientIdLong = (long)reader["clientId"];
+                        int cId = (int)clientIdLong;
+
                         return new Client
                         {
-                            clientId = (int)reader["clientId"],
+                            clientId = cId,
                             clientFirstName = (string)reader["clientFirstName"],
                             clientLastName = (string)reader["clientLastName"],
                             clientEmail = (string)reader["clientEmail"],
                             clientAddress = (string)reader["clientAddress"],
                             clientPhoneNumber = (string)reader["clientPhoneNumber"],
-                            clientLoyaltyPoints = (double)reader["clientLoyaltyPoints"]
+                            clientLoyaltyPoints = reader.IsDBNull(reader.GetOrdinal("clientLoyaltyPoints")) ? 0.0 : Convert.ToDouble(reader["clientLoyaltyPoints"])
                         };
                     }
                 }
@@ -214,7 +288,8 @@ namespace hyacinthuslux
 
                 ResetFormForProducts();
                 DisplayProducts();
-                _editIndex = -1; // Reset edit index after saving
+                UpdateTotalValue();
+                _editIndex = -1;
             }
             else
             {
@@ -231,7 +306,6 @@ namespace hyacinthuslux
                 _delivery.deliveryLocation = tbLocationDel.Text;
                 _delivery.deliveryDate = dtpDeliveryDate.Value;
 
-                // Here you can save the delivery to the database or pass it back to the main form
                 MessageBox.Show("Delivery saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
@@ -243,20 +317,17 @@ namespace hyacinthuslux
 
         private void buttonDeleteProd_Click(object sender, EventArgs e)
         {
-            
             if (dgvProductsForAnOrder.SelectedRows.Count > 0)
             {
-               
                 int selectedIndex = dgvProductsForAnOrder.SelectedRows[0].Index;
 
-                
                 dgvProductsForAnOrder.Rows.RemoveAt(selectedIndex);
 
-               
                 if (_delivery.DeliveryProducts.Count > selectedIndex && _delivery.deliveryQuantities.Count > selectedIndex)
                 {
                     _delivery.DeliveryProducts.RemoveAt(selectedIndex);
                     _delivery.deliveryQuantities.RemoveAt(selectedIndex);
+                    UpdateTotalValue(); // Update total value
                 }
                 else
                 {
@@ -269,5 +340,66 @@ namespace hyacinthuslux
             }
         }
 
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbTotal_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UpdateTotalValue()
+        {
+            decimal productSubtotal = 0;
+
+            // Calculate subtotal of products
+            for (int i = 0; i < _delivery.DeliveryProducts.Count; i++)
+            {
+                productSubtotal += _delivery.DeliveryProducts[i].productPrice * _delivery.deliveryQuantities[i];
+            }
+
+            tbSubtotal.Text = productSubtotal.ToString("C2");
+
+            // Update delivery cost
+            decimal deliveryCost = (decimal)Delivery.ReturnCostBasedOnDeliveryMethod(_delivery);
+            tbDeliveryCost.Text = deliveryCost.ToString("C2");
+
+            // Calculate total value
+            decimal totalValue = productSubtotal + deliveryCost;
+            tbTotal.Text = totalValue.ToString("C2");
+        }
+
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxCourierMethod_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (comboBoxCourierMethod.SelectedItem != null)
+            {
+                EnumCourier.CourierEnum val = (EnumCourier.CourierEnum)Enum.Parse(typeof(EnumCourier.CourierEnum), comboBoxCourierMethod.SelectedItem.ToString());
+                _delivery.deliveryMethod = val;
+                UpdateTotalValue(); 
+            }
+        }
+
+        private void tbDeliveryCost_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

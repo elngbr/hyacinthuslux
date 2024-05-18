@@ -10,6 +10,7 @@ namespace hyacinthuslux
     {
         private Delivery _delivery;
         private const string ConnectionString = "Data Source=ClientDatabase.sqlite";
+        private int _editIndex = -1;
 
         public Delivery_Form()
         {
@@ -80,21 +81,42 @@ namespace hyacinthuslux
         {
             comboBoxProducts.SelectedIndex = 0;
             numQuantity.Value = 0;
+            _editIndex = -1; // Reset edit index
         }
 
         private void btnAddProdOrder_Click(object sender, EventArgs e)
         {
-            if (comboBoxProducts.SelectedItem != null && numQuantity.Value > 0)
+            if (_editIndex == -1)
             {
-                string productName = (string)comboBoxProducts.SelectedItem;
-                Product selectedProduct = SubtractProduct(productName);
-                int quantity = (int)numQuantity.Value;
+                // Add new product and quantity
+                if (comboBoxProducts.SelectedItem != null && numQuantity.Value > 0)
+                {
+                    string productName = (string)comboBoxProducts.SelectedItem;
+                    Product selectedProduct = SubtractProduct(productName);
+                    int quantity = (int)numQuantity.Value;
 
-                _delivery.DeliveryProducts.Add(selectedProduct);
-                _delivery.deliveryQuantities.Add(quantity);
+                    _delivery.DeliveryProducts.Add(selectedProduct);
+                    _delivery.deliveryQuantities.Add(quantity);
 
-                ResetFormForProducts();
-                DisplayProducts();
+                    ResetFormForProducts();
+                    DisplayProducts();
+                }
+            }
+            else
+            {
+                // Update existing product and quantity
+                if (comboBoxProducts.SelectedItem != null && numQuantity.Value > 0)
+                {
+                    string productName = (string)comboBoxProducts.SelectedItem;
+                    Product updatedProduct = SubtractProduct(productName);
+                    int quantity = (int)numQuantity.Value;
+
+                    _delivery.DeliveryProducts[_editIndex] = updatedProduct;
+                    _delivery.deliveryQuantities[_editIndex] = quantity;
+
+                    ResetFormForProducts();
+                    DisplayProducts();
+                }
             }
         }
 
@@ -164,6 +186,40 @@ namespace hyacinthuslux
                 }
             }
             return null;
+        }
+
+        private void dgvProductsForAnOrder_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < dgvProductsForAnOrder.Rows.Count)
+            {
+                _editIndex = e.RowIndex;
+                string productName = dgvProductsForAnOrder.Rows[e.RowIndex].Cells[0].Value.ToString();
+                int quantity = (int)dgvProductsForAnOrder.Rows[e.RowIndex].Cells[1].Value;
+
+                comboBoxProducts.SelectedItem = productName;
+                numQuantity.Value = quantity;
+            }
+        }
+
+        private void buttonSaveOrder_Click(object sender, EventArgs e)
+        {
+            if (_editIndex != -1 && comboBoxProducts.SelectedItem != null && numQuantity.Value > 0)
+            {
+                string productName = (string)comboBoxProducts.SelectedItem;
+                Product updatedProduct = SubtractProduct(productName);
+                int quantity = (int)numQuantity.Value;
+
+                _delivery.DeliveryProducts[_editIndex] = updatedProduct;
+                _delivery.deliveryQuantities[_editIndex] = quantity;
+
+                ResetFormForProducts();
+                DisplayProducts();
+                _editIndex = -1; // Reset edit index after saving
+            }
+            else
+            {
+                MessageBox.Show("Please select a product and enter a quantity.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnSaveDelivery_Click(object sender, EventArgs e)

@@ -144,6 +144,7 @@
             this.dgvProductsForAnOrder.RowTemplate.Height = 24;
             this.dgvProductsForAnOrder.Size = new System.Drawing.Size(507, 420);
             this.dgvProductsForAnOrder.TabIndex = 16;
+            this.dgvProductsForAnOrder.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductsForAnOrder_CellDoubleClick);
             // 
             // Product
             // 
@@ -176,6 +177,7 @@
             this.buttonSaveOrder.TabIndex = 18;
             this.buttonSaveOrder.Text = "Save ProdOrder";
             this.buttonSaveOrder.UseVisualStyleBackColor = true;
+            this.buttonSaveOrder.Click += new System.EventHandler(this.buttonSaveOrder_Click);
             // 
             // btnAddProdOrder
             // 

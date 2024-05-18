@@ -42,6 +42,7 @@
             this.totalValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnDeleteDelivery = new System.Windows.Forms.Button();
             this.CouriersPieChart = new System.Windows.Forms.Button();
+            this.CouriersBarChart = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDeliveries)).BeginInit();
             this.SuspendLayout();
             // 
@@ -170,11 +171,22 @@
             this.CouriersPieChart.UseVisualStyleBackColor = true;
             this.CouriersPieChart.Click += new System.EventHandler(this.CouriersPieChart_Click);
             // 
+            // CouriersBarChart
+            // 
+            this.CouriersBarChart.Location = new System.Drawing.Point(826, 618);
+            this.CouriersBarChart.Name = "CouriersBarChart";
+            this.CouriersBarChart.Size = new System.Drawing.Size(131, 51);
+            this.CouriersBarChart.TabIndex = 9;
+            this.CouriersBarChart.Text = "Couriers Bar Chart";
+            this.CouriersBarChart.UseVisualStyleBackColor = true;
+            this.CouriersBarChart.Click += new System.EventHandler(this.CouriersBarChart_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1224, 778);
+            this.Controls.Add(this.CouriersBarChart);
             this.Controls.Add(this.CouriersPieChart);
             this.Controls.Add(this.btnDeleteDelivery);
             this.Controls.Add(this.dataGridViewDeliveries);
@@ -204,5 +216,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn delLocation;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalValue;
         private System.Windows.Forms.Button CouriersPieChart;
+        private System.Windows.Forms.Button CouriersBarChart;
     }
 }

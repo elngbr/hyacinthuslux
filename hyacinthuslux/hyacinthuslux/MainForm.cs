@@ -110,5 +110,17 @@ namespace hyacinthuslux
             form.Show();
         }
 
+       
+
+        private void CouriersBarChart_Click(object sender, EventArgs e)
+        {
+            var courierDistribution = deliveries
+        .GroupBy(d => d.deliveryMethod)
+        .ToDictionary(g => g.Key, g => g.Count());
+
+            BarChartCouriers form = new BarChartCouriers(courierDistribution);
+            form.Show();
+        }
+
     }
 }

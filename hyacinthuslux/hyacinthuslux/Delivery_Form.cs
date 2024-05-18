@@ -14,13 +14,14 @@ namespace hyacinthuslux
 {
     public partial class Delivery_Form : Form
     {
-        private Client_Form clientFormInstance;
+        
+        private List<Delivery> deliveryList;
 
         private const string ConnectionString = "Data Source=ClientDatabase.sqlite";
         public Delivery_Form()
         {
             InitializeComponent();
-            this.clientFormInstance = new Client_Form();
+            this.deliveryList=new List<Delivery>();
         }
 
         private void Delivery_Form_Load(object sender, EventArgs e)
@@ -113,6 +114,9 @@ namespace hyacinthuslux
 
         }
 
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

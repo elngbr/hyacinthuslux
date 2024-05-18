@@ -11,7 +11,7 @@ namespace hyacinthuslux
         private Delivery _delivery;
         private const string ConnectionString = "Data Source=ClientDatabase.sqlite";
         private int _editIndex = -1;
-
+       
         public Delivery_Form()
         {
             InitializeComponent();
@@ -82,6 +82,8 @@ namespace hyacinthuslux
                 {
                     MessageBox.Show("Please select a client.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
+                
             }
         }
 
@@ -116,6 +118,8 @@ namespace hyacinthuslux
                         comboBoxProducts.Items.Add(name);
                     }
                 }
+
+                connection.Close();
             }
 
             if (comboBoxProducts.Items.Count > 0)
@@ -141,6 +145,8 @@ namespace hyacinthuslux
                         comboBoxClients.Items.Add(id);
                     }
                 }
+
+                connection.Close();
             }
 
             if (comboBoxClients.Items.Count > 0)
@@ -200,8 +206,10 @@ namespace hyacinthuslux
             {
                 Product product = _delivery.DeliveryProducts[i];
                 int quantity = _delivery.deliveryQuantities[i];
+                decimal unitPrice = product.productPrice;
+                decimal total = unitPrice * quantity;
 
-                dgvProductsForAnOrder.Rows.Add(product.productName, quantity);
+                dgvProductsForAnOrder.Rows.Add(product.productName, quantity, unitPrice, total);
             }
         }
 
@@ -227,6 +235,8 @@ namespace hyacinthuslux
                         };
                     }
                 }
+
+                connection.Close();
             }
             return null;
         }
@@ -258,6 +268,7 @@ namespace hyacinthuslux
                         };
                     }
                 }
+                connection.Close();
             }
             return null;
         }
@@ -398,6 +409,11 @@ namespace hyacinthuslux
         }
 
         private void textBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvProductsForAnOrder_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

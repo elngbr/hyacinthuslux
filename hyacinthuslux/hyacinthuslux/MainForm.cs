@@ -36,8 +36,11 @@ namespace hyacinthuslux
 
         private void addDeliveryBtn_Click(object sender, EventArgs e)
         {
-            Delivery_Form form=new Delivery_Form();
+            Delivery_Form form = new Delivery_Form();
+           
             form.Show();
         }
+
+        
     }
 }

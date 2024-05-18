@@ -31,14 +31,17 @@
             this.addDeliveryBtn = new System.Windows.Forms.Button();
             this.addClientBtn = new System.Windows.Forms.Button();
             this.btnAddProduct = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewDeliveries = new System.Windows.Forms.DataGridView();
             this.btnDeleteDelivery = new System.Windows.Forms.Button();
             this.ClientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdClient = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantities = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Products = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeliveryMethod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.delLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDeliveries)).BeginInit();
             this.SuspendLayout();
             // 
             // addDeliveryBtn
@@ -71,21 +74,24 @@
             this.btnAddProduct.UseVisualStyleBackColor = true;
             this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 
-            // dataGridView1
+            // dataGridViewDeliveries
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewDeliveries.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewDeliveries.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ClientName,
+            this.IdClient,
+            this.Quantities,
+            this.Products,
             this.DeliveryMethod,
             this.DeliveryDate,
             this.delLocation,
             this.totalValue});
-            this.dataGridView1.Location = new System.Drawing.Point(48, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(986, 567);
-            this.dataGridView1.TabIndex = 6;
+            this.dataGridViewDeliveries.Location = new System.Drawing.Point(3, 2);
+            this.dataGridViewDeliveries.Name = "dataGridViewDeliveries";
+            this.dataGridViewDeliveries.RowHeadersWidth = 51;
+            this.dataGridViewDeliveries.RowTemplate.Height = 24;
+            this.dataGridViewDeliveries.Size = new System.Drawing.Size(1209, 567);
+            this.dataGridViewDeliveries.TabIndex = 6;
             // 
             // btnDeleteDelivery
             // 
@@ -103,19 +109,40 @@
             this.ClientName.Name = "ClientName";
             this.ClientName.Width = 150;
             // 
+            // IdClient
+            // 
+            this.IdClient.HeaderText = "IdClient";
+            this.IdClient.MinimumWidth = 6;
+            this.IdClient.Name = "IdClient";
+            this.IdClient.Width = 45;
+            // 
+            // Quantities
+            // 
+            this.Quantities.HeaderText = "Quanitites";
+            this.Quantities.MinimumWidth = 6;
+            this.Quantities.Name = "Quantities";
+            this.Quantities.Width = 70;
+            // 
+            // Products
+            // 
+            this.Products.HeaderText = "Products";
+            this.Products.MinimumWidth = 6;
+            this.Products.Name = "Products";
+            this.Products.Width = 115;
+            // 
             // DeliveryMethod
             // 
             this.DeliveryMethod.HeaderText = "Delivery Method";
             this.DeliveryMethod.MinimumWidth = 6;
             this.DeliveryMethod.Name = "DeliveryMethod";
-            this.DeliveryMethod.Width = 125;
+            this.DeliveryMethod.Width = 95;
             // 
             // DeliveryDate
             // 
             this.DeliveryDate.HeaderText = "DeliveryDate";
             this.DeliveryDate.MinimumWidth = 6;
             this.DeliveryDate.Name = "DeliveryDate";
-            this.DeliveryDate.Width = 150;
+            this.DeliveryDate.Width = 125;
             // 
             // delLocation
             // 
@@ -129,22 +156,22 @@
             this.totalValue.HeaderText = "totalValue";
             this.totalValue.MinimumWidth = 6;
             this.totalValue.Name = "totalValue";
-            this.totalValue.Width = 125;
+            this.totalValue.Width = 70;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1079, 778);
+            this.ClientSize = new System.Drawing.Size(1224, 778);
             this.Controls.Add(this.btnDeleteDelivery);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewDeliveries);
             this.Controls.Add(this.btnAddProduct);
             this.Controls.Add(this.addClientBtn);
             this.Controls.Add(this.addDeliveryBtn);
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDeliveries)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -153,9 +180,12 @@
         private System.Windows.Forms.Button addDeliveryBtn;
         private System.Windows.Forms.Button addClientBtn;
         private System.Windows.Forms.Button btnAddProduct;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewDeliveries;
         private System.Windows.Forms.Button btnDeleteDelivery;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClientName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdClient;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantities;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Products;
         private System.Windows.Forms.DataGridViewTextBoxColumn DeliveryMethod;
         private System.Windows.Forms.DataGridViewTextBoxColumn DeliveryDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn delLocation;

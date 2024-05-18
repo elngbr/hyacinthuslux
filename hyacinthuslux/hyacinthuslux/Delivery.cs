@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,13 +8,11 @@ namespace hyacinthuslux
 {
     public class Delivery
     {
-        
-        public Client DeliveryClient { get;  set; }
-        public List<Product> DeliveryProducts { get;  set; }
+        public Client DeliveryClient { get; set; }
+        public List<Product> DeliveryProducts { get; set; }
         public List<int> deliveryQuantities { get; set; }
-        public String deliveryLocation { get;  set; }
+        public string deliveryLocation { get; set; }
         public DateTime deliveryDate { get; set; }
-
         public EnumCourier.CourierEnum deliveryMethod { get; set; }
 
         private decimal _deliveryTotalValue;
@@ -46,7 +43,15 @@ namespace hyacinthuslux
             deliveryQuantities = new List<int>(quantities);
             deliveryLocation = location;
             deliveryDate = date;
-            this.deliveryMethod=delMethod;
+            this.deliveryMethod = delMethod;
+        }
+
+        public decimal GetTotalValue()
+        {
+            decimal prodTotVal = DeliveryTotalValue;
+            decimal transportValue = (decimal)ReturnCostBasedOnDeliveryMethod(this);
+            decimal result = prodTotVal + transportValue;
+            return result;
         }
 
         public string DeliveryConcatenatedProducts()
@@ -65,17 +70,13 @@ namespace hyacinthuslux
             return s.ToString();
         }
 
-
-
         public static double ReturnCostBasedOnDeliveryMethod(Delivery delivery)
         {
-            
             if (delivery.DeliveryTotalValue > 50)
             {
-                return 0; 
+                return 0;
             }
 
-            
             switch (delivery.deliveryMethod)
             {
                 case EnumCourier.CourierEnum.Cargus:
@@ -104,24 +105,9 @@ namespace hyacinthuslux
 
                 case EnumCourier.CourierEnum.From_Store:
                     return 0;
-
-
             }
 
             return 0;
         }
-
-
-
-
-
-
-
     }
-
-
-    
-
-
 }
-

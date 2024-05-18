@@ -59,6 +59,12 @@
       <DependentUpon>Client_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Delivery.cs" />
+    <Compile Include="Delivery_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Delivery_Form.Designer.cs">
+      <DependentUpon>Delivery_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="EnumFlower.cs" />
     <Compile Include="InvalidAddressException.cs" />
     <Compile Include="MainForm.cs">
@@ -78,6 +84,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Client_Form.resx">
       <DependentUpon>Client_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Delivery_Form.resx">
+      <DependentUpon>Delivery_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

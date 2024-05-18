@@ -18,6 +18,11 @@ namespace hyacinthuslux
         public string clientPhoneNumber { get; set; }
         public double clientLoyaltyPoints { get; set; }
 
+        public string FullName
+        {
+            get { return $"{clientFirstName} {clientLastName}"; }
+        }
+
         public Client(int Id, string fname, string lname, string email, string address, string phonenumber, double loyaltyPoints)
         {
 

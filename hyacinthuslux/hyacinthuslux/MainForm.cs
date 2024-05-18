@@ -33,5 +33,11 @@ namespace hyacinthuslux
             Product_Form fomr=new Product_Form();   
             fomr.Show();
         }
+
+        private void addDeliveryBtn_Click(object sender, EventArgs e)
+        {
+            Delivery_Form form=new Delivery_Form();
+            form.Show();
+        }
     }
 }

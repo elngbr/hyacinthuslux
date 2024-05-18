@@ -42,6 +42,7 @@
             this.addDeliveryBtn.TabIndex = 2;
             this.addDeliveryBtn.Text = "Add &Delivery";
             this.addDeliveryBtn.UseVisualStyleBackColor = true;
+            this.addDeliveryBtn.Click += new System.EventHandler(this.addDeliveryBtn_Click);
             // 
             // listView1
             // 

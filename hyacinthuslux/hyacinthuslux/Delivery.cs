@@ -9,14 +9,43 @@ namespace hyacinthuslux
     public class Delivery
     {
         
-        public Client DeliveryClient { get; private set; }
-        public List<Product> DeliveryProducts { get; private set; }
+        public Client DeliveryClient { get;  set; }
+        public List<Product> DeliveryProducts { get;  set; }
+        public List<int> deliveryQuantities { get; set; }
+        public String deliveryLocation { get;  set; }
+        DateTime deliveryDate { get; set; }
 
-        
-        public Delivery(Client client, List<Product> _products)
+        public Delivery()
+        {
+            deliveryDate = DateTime.Now;
+        }
+        public Delivery(Client client, List<Product> _products, List<int>quantities, DateTime date, String location)
         {
             DeliveryClient = client;
             DeliveryProducts = new List<Product>(_products);
+            this.deliveryQuantities= new List<int>(quantities);
+            this.deliveryLocation = location;
+            this.deliveryDate = date;
+
+
+        }
+
+        public String deliveryConcatenatedProducts()
+        {
+            StringBuilder s = new StringBuilder();
+            for (int i=0; i<deliveryQuantities.Count;i++)
+            {
+                s.Append(DeliveryProducts[i].ToString() );
+                s.Append("x");
+                s.Append(deliveryQuantities[i].ToString());
+                s.Append(' ');
+            }
+
+            s.Append(":");
+
+            return s.ToString();
+
+            
         }
 
         

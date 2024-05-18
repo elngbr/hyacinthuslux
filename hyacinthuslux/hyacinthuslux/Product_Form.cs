@@ -75,6 +75,41 @@ namespace hyacinthuslux
                 }
             }
         }
+
+        private void updateProduct(Product product, string oldname)
+        {
+            string query = "UPDATE Product set productType=@type, productPrice=@price, isAvailable=@avail" +
+                ", productStock=@stock,productName=@name where productName=@oldname; ";
+
+            using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
+            {
+                connection.Open();
+                SQLiteCommand command = new SQLiteCommand(query, connection);
+                command.Parameters.AddWithValue("@name", product.productName);
+                command.Parameters.AddWithValue("@price", product.productPrice);
+                command.Parameters.AddWithValue("@avail", product.IsAvailable);
+                command.Parameters.AddWithValue("@stock", product.productStock);
+                command.Parameters.AddWithValue("@type", product.productType);
+                command.Parameters.AddWithValue("@oldname", oldname);
+
+                command.ExecuteNonQuery();
+
+                foreach (var p in products)
+                {
+                    if (p.productName == product.productName)
+                    {
+                        p.productType = product.productType;
+                        p.productPrice = product.productPrice;
+                        p.IsAvailable = product.IsAvailable;
+                        p.productStock = product.productStock;
+                        break; 
+                    }
+                }
+            }
+        }
+
+
+
         private void Product_Form_Load(object sender, EventArgs e)
         {
             
@@ -132,7 +167,7 @@ namespace hyacinthuslux
             if (lvProducts.SelectedItems.Count > 0)
             {
                 var selectedProduct = lvProducts.SelectedItems[0].Tag as Product;
-
+                string oldname=selectedProduct.productName.ToString(); ;
                 decimal price;
                 
                 bool success = Decimal.TryParse(tbPrice.Text, out price);
@@ -148,9 +183,10 @@ namespace hyacinthuslux
                 lvProducts.SelectedItems[0].SubItems[2].Text = numStock.Value.ToString();
                 lvProducts.SelectedItems[0].SubItems[3].Text = cbTypeFlower.Text;
                 lvProducts.SelectedItems[0].SubItems[4].Text = ckBAvailability.Checked.ToString();
-                
-               
+
                 ResetForm();
+                updateProduct(selectedProduct, oldname);
+                
             }
         }
 
@@ -160,11 +196,25 @@ namespace hyacinthuslux
             {
                 var _product = lvProducts.SelectedItems[0].Tag as Product;
 
-
+                DeleteProduct(_product.productName);
+                //readProduct();
                products.Remove(_product);
                 ResetForm();
                 DisplayProducts();
 
+            }
+        }
+
+        private void DeleteProduct(string name)
+        {
+            string query = "DELETE FROM Product where productName=@name;";
+            using (SQLiteConnection connection =new SQLiteConnection(ConnectionString))
+            {
+                connection.Open();
+                SQLiteCommand command=new SQLiteCommand(query, connection);
+                command.Parameters.AddWithValue("@name", name);
+
+                command.ExecuteNonQuery();
             }
         }
 
@@ -173,13 +223,15 @@ namespace hyacinthuslux
             if (lvProducts.SelectedItems.Count > 0)
             {
                 var selectedProduct = lvProducts.SelectedItems[0].Tag as Product;
-
+                string oldname= selectedProduct.productName;
 
                 numStock.Value = selectedProduct.productStock;
                 tbPrice.Text = selectedProduct.productPrice.ToString();
                 tbTitle.Text=selectedProduct.productName.ToString();
                 ckBAvailability.Checked=selectedProduct.IsAvailable.Equals(true);
                 cbTypeFlower.Text=selectedProduct.productType.ToString();
+
+                updateProduct(selectedProduct, oldname);
             }
         }
 

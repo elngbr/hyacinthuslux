@@ -20,7 +20,7 @@ namespace hyacinthuslux
         private const string ConnectionString = "Data Source=ClientDatabase.sqlite";
 
         ErrorProvider errorProvider = new ErrorProvider();
-        private List<Client> clients = new List<Client>();
+        public List<Client> clients = new List<Client>();
         public Client_Form()
         {
             InitializeComponent();
@@ -124,7 +124,7 @@ namespace hyacinthuslux
         {
             Client _client = 
                 new Client((int)numId.Value, tbFirstName.Text, tbLastName.Text, tbEmail.Text, tbAddress.Text, tbPhoneNumber.Text, (int)numLoy.Value);
-            //clients.Add(_client);
+            clients.Add(_client);
             createClient(_client);
             ResetForm();
             ReadClient();

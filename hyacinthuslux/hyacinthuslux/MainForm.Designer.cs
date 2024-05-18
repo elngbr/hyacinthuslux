@@ -32,7 +32,6 @@
             this.addClientBtn = new System.Windows.Forms.Button();
             this.btnAddProduct = new System.Windows.Forms.Button();
             this.dataGridViewDeliveries = new System.Windows.Forms.DataGridView();
-            this.btnDeleteDelivery = new System.Windows.Forms.Button();
             this.ClientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdClient = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantities = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,12 +40,14 @@
             this.DeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.delLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDeleteDelivery = new System.Windows.Forms.Button();
+            this.CouriersPieChart = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDeliveries)).BeginInit();
             this.SuspendLayout();
             // 
             // addDeliveryBtn
             // 
-            this.addDeliveryBtn.Location = new System.Drawing.Point(511, 637);
+            this.addDeliveryBtn.Location = new System.Drawing.Point(352, 618);
             this.addDeliveryBtn.Name = "addDeliveryBtn";
             this.addDeliveryBtn.Size = new System.Drawing.Size(167, 51);
             this.addDeliveryBtn.TabIndex = 2;
@@ -56,7 +57,7 @@
             // 
             // addClientBtn
             // 
-            this.addClientBtn.Location = new System.Drawing.Point(140, 638);
+            this.addClientBtn.Location = new System.Drawing.Point(12, 615);
             this.addClientBtn.Name = "addClientBtn";
             this.addClientBtn.Size = new System.Drawing.Size(170, 51);
             this.addClientBtn.TabIndex = 4;
@@ -66,7 +67,7 @@
             // 
             // btnAddProduct
             // 
-            this.btnAddProduct.Location = new System.Drawing.Point(694, 637);
+            this.btnAddProduct.Location = new System.Drawing.Point(525, 618);
             this.btnAddProduct.Name = "btnAddProduct";
             this.btnAddProduct.Size = new System.Drawing.Size(156, 51);
             this.btnAddProduct.TabIndex = 5;
@@ -90,17 +91,8 @@
             this.dataGridViewDeliveries.Name = "dataGridViewDeliveries";
             this.dataGridViewDeliveries.RowHeadersWidth = 51;
             this.dataGridViewDeliveries.RowTemplate.Height = 24;
-            this.dataGridViewDeliveries.Size = new System.Drawing.Size(1209, 567);
+            this.dataGridViewDeliveries.Size = new System.Drawing.Size(1190, 577);
             this.dataGridViewDeliveries.TabIndex = 6;
-            // 
-            // btnDeleteDelivery
-            // 
-            this.btnDeleteDelivery.Location = new System.Drawing.Point(332, 638);
-            this.btnDeleteDelivery.Name = "btnDeleteDelivery";
-            this.btnDeleteDelivery.Size = new System.Drawing.Size(158, 48);
-            this.btnDeleteDelivery.TabIndex = 7;
-            this.btnDeleteDelivery.Text = "Delete Delivery";
-            this.btnDeleteDelivery.UseVisualStyleBackColor = true;
             // 
             // ClientName
             // 
@@ -158,11 +150,32 @@
             this.totalValue.Name = "totalValue";
             this.totalValue.Width = 70;
             // 
+            // btnDeleteDelivery
+            // 
+            this.btnDeleteDelivery.Location = new System.Drawing.Point(188, 618);
+            this.btnDeleteDelivery.Name = "btnDeleteDelivery";
+            this.btnDeleteDelivery.Size = new System.Drawing.Size(158, 48);
+            this.btnDeleteDelivery.TabIndex = 7;
+            this.btnDeleteDelivery.Text = "Delete Delivery";
+            this.btnDeleteDelivery.UseVisualStyleBackColor = true;
+            this.btnDeleteDelivery.Click += new System.EventHandler(this.btnDeleteDelivery_Click);
+            // 
+            // CouriersPieChart
+            // 
+            this.CouriersPieChart.Location = new System.Drawing.Point(687, 618);
+            this.CouriersPieChart.Name = "CouriersPieChart";
+            this.CouriersPieChart.Size = new System.Drawing.Size(133, 51);
+            this.CouriersPieChart.TabIndex = 8;
+            this.CouriersPieChart.Text = "Couriers Pie Chart";
+            this.CouriersPieChart.UseVisualStyleBackColor = true;
+            this.CouriersPieChart.Click += new System.EventHandler(this.CouriersPieChart_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1224, 778);
+            this.Controls.Add(this.CouriersPieChart);
             this.Controls.Add(this.btnDeleteDelivery);
             this.Controls.Add(this.dataGridViewDeliveries);
             this.Controls.Add(this.btnAddProduct);
@@ -190,5 +203,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DeliveryDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn delLocation;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalValue;
+        private System.Windows.Forms.Button CouriersPieChart;
     }
 }

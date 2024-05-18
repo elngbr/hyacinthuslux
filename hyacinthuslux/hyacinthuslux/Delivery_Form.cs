@@ -11,7 +11,9 @@ namespace hyacinthuslux
         private Delivery _delivery;
         private const string ConnectionString = "Data Source=ClientDatabase.sqlite";
         private int _editIndex = -1;
-       
+        public event EventHandler<DeliveryEventArgs> DeliverySaved;
+        private int _clientId;
+        private DateTime _deliveryDate;
         public Delivery_Form()
         {
             InitializeComponent();
@@ -20,6 +22,27 @@ namespace hyacinthuslux
                 DeliveryProducts = new List<Product>(),
                 deliveryQuantities = new List<int>()
             };
+
+            comboBoxCourierMethod.SelectedIndexChanged += ComboBoxCourierMethod_SelectedIndexChanged;
+        }
+
+        public Delivery_Form(Delivery delivery)
+        {
+            InitializeComponent();
+            if (delivery == null)
+            {
+                // Creating a new delivery
+                _delivery = new Delivery
+                {
+                    DeliveryProducts = new List<Product>(),
+                    deliveryQuantities = new List<int>()
+                };
+            }
+            else
+            {
+                // Modifying an existing delivery
+                _delivery = delivery;
+            }
 
             comboBoxCourierMethod.SelectedIndexChanged += ComboBoxCourierMethod_SelectedIndexChanged;
         }
@@ -48,6 +71,7 @@ namespace hyacinthuslux
                 UpdateTotalValue();
             }
         }
+
 
         private void ComboBoxCourierMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -88,6 +112,8 @@ namespace hyacinthuslux
 
                 
             }
+
+            DeliverySaved?.Invoke(this, new DeliveryEventArgs(_delivery));
         }
 
         private void PopulateComboBoxCourierMethods()

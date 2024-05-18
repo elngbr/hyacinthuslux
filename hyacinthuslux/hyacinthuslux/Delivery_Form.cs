@@ -24,6 +24,9 @@ namespace hyacinthuslux
             comboBoxCourierMethod.SelectedIndexChanged += ComboBoxCourierMethod_SelectedIndexChanged;
         }
 
+
+
+
         private void Delivery_Form_Load(object sender, EventArgs e)
         {
             PopulateComboBoxClients();

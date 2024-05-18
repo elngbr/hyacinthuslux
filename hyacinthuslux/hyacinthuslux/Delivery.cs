@@ -13,7 +13,7 @@ namespace hyacinthuslux
         public List<Product> DeliveryProducts { get;  set; }
         public List<int> deliveryQuantities { get; set; }
         public String deliveryLocation { get;  set; }
-        DateTime deliveryDate { get; set; }
+        public DateTime deliveryDate { get; set; }
 
         public Delivery()
         {

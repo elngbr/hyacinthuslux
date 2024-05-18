@@ -30,24 +30,24 @@
         {
             this.comboBoxClients = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dtpDeliveryDate = new System.Windows.Forms.DateTimePicker();
+            this.tbLocationDel = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBoxProducts = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.numQuantity = new System.Windows.Forms.NumericUpDown();
+            this.dgvProductsForAnOrder = new System.Windows.Forms.DataGridView();
             this.Product = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonDeleteProd = new System.Windows.Forms.Button();
             this.buttonSaveOrder = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnAddProdOrder = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonOk = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numQuantity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductsForAnOrder)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBoxClients
@@ -57,7 +57,6 @@
             this.comboBoxClients.Name = "comboBoxClients";
             this.comboBoxClients.Size = new System.Drawing.Size(200, 24);
             this.comboBoxClients.TabIndex = 4;
-            this.comboBoxClients.SelectedIndexChanged += new System.EventHandler(this.comboBoxClients_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -68,19 +67,19 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Client";
             // 
-            // dateTimePicker1
+            // dtpDeliveryDate
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(107, 124);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker1.TabIndex = 6;
+            this.dtpDeliveryDate.Location = new System.Drawing.Point(107, 124);
+            this.dtpDeliveryDate.Name = "dtpDeliveryDate";
+            this.dtpDeliveryDate.Size = new System.Drawing.Size(200, 22);
+            this.dtpDeliveryDate.TabIndex = 6;
             // 
-            // textBox1
+            // tbLocationDel
             // 
-            this.textBox1.Location = new System.Drawing.Point(107, 164);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 22);
-            this.textBox1.TabIndex = 7;
+            this.tbLocationDel.Location = new System.Drawing.Point(107, 164);
+            this.tbLocationDel.Name = "tbLocationDel";
+            this.tbLocationDel.Size = new System.Drawing.Size(200, 22);
+            this.tbLocationDel.TabIndex = 7;
             // 
             // label2
             // 
@@ -107,7 +106,6 @@
             this.comboBoxProducts.Name = "comboBoxProducts";
             this.comboBoxProducts.Size = new System.Drawing.Size(200, 24);
             this.comboBoxProducts.TabIndex = 11;
-            this.comboBoxProducts.SelectedIndexChanged += new System.EventHandler(this.comboBoxProducts_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -127,25 +125,25 @@
             this.label5.TabIndex = 14;
             this.label5.Text = "Choose Quantity";
             // 
-            // numericUpDown1
+            // numQuantity
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(448, 49);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDown1.TabIndex = 15;
+            this.numQuantity.Location = new System.Drawing.Point(448, 49);
+            this.numQuantity.Name = "numQuantity";
+            this.numQuantity.Size = new System.Drawing.Size(120, 22);
+            this.numQuantity.TabIndex = 15;
             // 
-            // dataGridView2
+            // dgvProductsForAnOrder
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvProductsForAnOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProductsForAnOrder.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Product,
             this.Quantity});
-            this.dataGridView2.Location = new System.Drawing.Point(342, 70);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(507, 420);
-            this.dataGridView2.TabIndex = 16;
+            this.dgvProductsForAnOrder.Location = new System.Drawing.Point(342, 77);
+            this.dgvProductsForAnOrder.Name = "dgvProductsForAnOrder";
+            this.dgvProductsForAnOrder.RowHeadersWidth = 51;
+            this.dgvProductsForAnOrder.RowTemplate.Height = 24;
+            this.dgvProductsForAnOrder.Size = new System.Drawing.Size(507, 420);
+            this.dgvProductsForAnOrder.TabIndex = 16;
             // 
             // Product
             // 
@@ -169,7 +167,6 @@
             this.buttonDeleteProd.TabIndex = 17;
             this.buttonDeleteProd.Text = "Delete ProdOrder";
             this.buttonDeleteProd.UseVisualStyleBackColor = true;
-            this.buttonDeleteProd.Click += new System.EventHandler(this.button1_Click);
             // 
             // buttonSaveOrder
             // 
@@ -180,14 +177,15 @@
             this.buttonSaveOrder.Text = "Save ProdOrder";
             this.buttonSaveOrder.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnAddProdOrder
             // 
-            this.button3.Location = new System.Drawing.Point(610, 503);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(156, 48);
-            this.button3.TabIndex = 19;
-            this.button3.Text = "Add ProdOrder";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnAddProdOrder.Location = new System.Drawing.Point(610, 503);
+            this.btnAddProdOrder.Name = "btnAddProdOrder";
+            this.btnAddProdOrder.Size = new System.Drawing.Size(156, 48);
+            this.btnAddProdOrder.TabIndex = 19;
+            this.btnAddProdOrder.Text = "Add ProdOrder";
+            this.btnAddProdOrder.UseVisualStyleBackColor = true;
+            this.btnAddProdOrder.Click += new System.EventHandler(this.btnAddProdOrder_Click);
             // 
             // buttonCancel
             // 
@@ -214,25 +212,25 @@
             this.ClientSize = new System.Drawing.Size(911, 719);
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.buttonCancel);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnAddProdOrder);
             this.Controls.Add(this.buttonSaveOrder);
             this.Controls.Add(this.buttonDeleteProd);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.dgvProductsForAnOrder);
+            this.Controls.Add(this.numQuantity);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.comboBoxProducts);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.tbLocationDel);
+            this.Controls.Add(this.dtpDeliveryDate);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxClients);
             this.Name = "Delivery_Form";
             this.Text = "Delivery_Form";
             this.Load += new System.EventHandler(this.Delivery_Form_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numQuantity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductsForAnOrder)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -241,20 +239,20 @@
         #endregion
         private System.Windows.Forms.ComboBox comboBoxClients;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DateTimePicker dtpDeliveryDate;
+        private System.Windows.Forms.TextBox tbLocationDel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBoxProducts;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.NumericUpDown numQuantity;
+        private System.Windows.Forms.DataGridView dgvProductsForAnOrder;
         private System.Windows.Forms.DataGridViewTextBoxColumn Product;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.Button buttonDeleteProd;
         private System.Windows.Forms.Button buttonSaveOrder;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnAddProdOrder;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonOk;
     }

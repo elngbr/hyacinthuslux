@@ -54,6 +54,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.buttonPrintPreview = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numStock)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -226,7 +227,7 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
             // 
             // SerializeBinary
             // 
@@ -244,7 +245,7 @@
             this.DeserializeBinary.Image = ((System.Drawing.Image)(resources.GetObject("DeserializeBinary.Image")));
             this.DeserializeBinary.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.DeserializeBinary.Name = "DeserializeBinary";
-            this.DeserializeBinary.Size = new System.Drawing.Size(131, 28);
+            this.DeserializeBinary.Size = new System.Drawing.Size(131, 24);
             this.DeserializeBinary.Text = "Deserialize Binary";
             this.DeserializeBinary.Click += new System.EventHandler(this.DeserializeBinary_Click);
             // 
@@ -275,11 +276,22 @@
             this.toolStripStatusLabel2.Text = "Deserialize XML";
             this.toolStripStatusLabel2.Click += new System.EventHandler(this.toolStripStatusLabel2_Click);
             // 
+            // buttonPrintPreview
+            // 
+            this.buttonPrintPreview.Location = new System.Drawing.Point(620, 556);
+            this.buttonPrintPreview.Name = "buttonPrintPreview";
+            this.buttonPrintPreview.Size = new System.Drawing.Size(124, 31);
+            this.buttonPrintPreview.TabIndex = 17;
+            this.buttonPrintPreview.Text = "Print Preview";
+            this.buttonPrintPreview.UseVisualStyleBackColor = true;
+            this.buttonPrintPreview.Click += new System.EventHandler(this.buttonPrintPreview_Click);
+            // 
             // Product_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(869, 719);
+            this.Controls.Add(this.buttonPrintPreview);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.numStock);
@@ -298,6 +310,7 @@
             this.Name = "Product_Form";
             this.Text = "Product_Form";
             this.Load += new System.EventHandler(this.Product_Form_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Product_Form_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.numStock)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
@@ -335,5 +348,6 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.Button buttonPrintPreview;
     }
 }

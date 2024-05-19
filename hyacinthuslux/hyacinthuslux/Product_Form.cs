@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -19,10 +20,13 @@ namespace hyacinthuslux
     {
         private const string ConnectionString = "Data Source=ClientDatabase.sqlite";
 
+        private PrintDocument printDocument = new PrintDocument();
+
         public Product_Form()
         {
             InitializeComponent();
             products = new List<Product>();
+           printDocument.PrintPage += PrintDocument_PrintPage;
         }
         ErrorProvider errorProvider =new ErrorProvider();
         List<Product> products = new List<Product>();
@@ -345,6 +349,25 @@ namespace hyacinthuslux
 
                 }
             }
+        }
+
+        private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            Bitmap bmp=new Bitmap(lvProducts.Width,lvProducts.Height);
+            lvProducts.DrawToBitmap(bmp, new Rectangle(0,0,lvProducts.Width,lvProducts.Height));
+            e.Graphics.DrawImage(bmp, 50, 50);
+        }
+
+        private void buttonPrintPreview_Click(object sender, EventArgs e)
+        {
+            PrintPreviewDialog printPreviewDialog =new PrintPreviewDialog();
+            printPreviewDialog.Document = printDocument;
+            printPreviewDialog.ShowDialog();
+        }
+
+        private void Product_Form_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

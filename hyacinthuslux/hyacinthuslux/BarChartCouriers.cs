@@ -42,17 +42,14 @@ namespace hyacinthuslux
                 int barHeight = (int)((double)kvp.Value / maxValue * maxHeight);
                 Rectangle barRect = new Rectangle(startX, startY + maxHeight - barHeight, barWidth, barHeight);
 
-                // Generate a random color for each bar
                 Color barColor = Color.FromArgb(rand.Next(256), rand.Next(256), rand.Next(256));
                 graphics.FillRectangle(new SolidBrush(barColor), barRect);
 
-                // Draw text for each bar
                 string text = $"{kvp.Key.ToString()}\n{kvp.Value}";
                 SizeF textSize = graphics.MeasureString(text, this.Font);
                 PointF textLocation = new PointF(startX + (barWidth - textSize.Width) / 2, startY + maxHeight - barHeight - textSize.Height - 5);
                 graphics.DrawString(text, this.Font, Brushes.Black, textLocation);
 
-                // Draw legend
                 Rectangle legendRect = new Rectangle(legendX, legendY, legendWidth, legendHeight);
                 graphics.FillRectangle(new SolidBrush(barColor), legendRect);
                 graphics.DrawString($"{kvp.Key.ToString()} - {kvp.Value}", this.Font, Brushes.Black, legendX + legendWidth + 5, legendY);
@@ -62,7 +59,9 @@ namespace hyacinthuslux
             }
         }
 
+        private void BarChartCouriers_Load(object sender, EventArgs e)
+        {
 
-
+        }
     }
 }

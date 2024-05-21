@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -12,9 +13,9 @@ namespace hyacinthuslux
         private const string ConnectionString = "Data Source=ClientDatabase.sqlite";
         private int _editIndex = -1;
         public event EventHandler<DeliveryEventArgs> DeliverySaved;
-        private int _clientId;
-        private DateTime _deliveryDate;
-        public Delivery_Form()
+        private Dictionary<string, int> _remainingProductStocks;
+
+        public Delivery_Form(Dictionary<string, int> remainingProductStocks)
         {
             InitializeComponent();
             _delivery = new Delivery
@@ -23,10 +24,12 @@ namespace hyacinthuslux
                 deliveryQuantities = new List<int>()
             };
 
+            _remainingProductStocks = new Dictionary<string, int>(remainingProductStocks);
+
             comboBoxCourierMethod.SelectedIndexChanged += ComboBoxCourierMethod_SelectedIndexChanged;
         }
 
-        public Delivery_Form(Delivery delivery)
+        public Delivery_Form(Delivery delivery, Dictionary<string, int> remainingProductStocks)
         {
             InitializeComponent();
             if (delivery == null)
@@ -44,11 +47,10 @@ namespace hyacinthuslux
                 _delivery = delivery;
             }
 
+            _remainingProductStocks = new Dictionary<string, int>(remainingProductStocks);
+
             comboBoxCourierMethod.SelectedIndexChanged += ComboBoxCourierMethod_SelectedIndexChanged;
         }
-
-
-
 
         private void Delivery_Form_Load(object sender, EventArgs e)
         {
@@ -72,7 +74,6 @@ namespace hyacinthuslux
             }
         }
 
-
         private void ComboBoxCourierMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBoxCourierMethod.SelectedItem != null)
@@ -91,13 +92,24 @@ namespace hyacinthuslux
                 {
                     int clientId = (int)comboBoxClients.SelectedItem;
                     _delivery.DeliveryClient = SubtractClient(clientId);
+                    _delivery.DeliveryClient = SubtractClient(clientId);
 
                     if (!string.IsNullOrWhiteSpace(tbLocationDel.Text))
                     {
                         _delivery.deliveryLocation = tbLocationDel.Text;
                         _delivery.deliveryDate = dtpDeliveryDate.Value;
 
-                        MessageBox.Show("Delivery information updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        // Update the product stocks based on the current delivery
+                        foreach (var kvp in _delivery.DeliveryProducts.Zip(_delivery.deliveryQuantities, (p, q) => new { p.productName, q }))
+                        {
+                            if (_remainingProductStocks.ContainsKey(kvp.productName))
+                            {
+                                _remainingProductStocks[kvp.productName] -= kvp.q;
+                            }
+                        }
+
+                        MessageBox.Show("Delivery saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DeliverySaved?.Invoke(this, new DeliveryEventArgs(_delivery));
                         this.Close();
                     }
                     else
@@ -109,11 +121,7 @@ namespace hyacinthuslux
                 {
                     MessageBox.Show("Please select a client.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
-                
             }
-
-            DeliverySaved?.Invoke(this, new DeliveryEventArgs(_delivery));
         }
 
         private void PopulateComboBoxCourierMethods()
@@ -134,7 +142,7 @@ namespace hyacinthuslux
         private void PopulateComboBoxProducts()
         {
             comboBoxProducts.Items.Clear();
-            string query = "SELECT productName FROM Product;";
+            string query = "SELECT productName, productStock FROM Product where isAvailable = 1;";
             using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
             {
                 connection.Open();
@@ -147,7 +155,6 @@ namespace hyacinthuslux
                         comboBoxProducts.Items.Add(name);
                     }
                 }
-
                 connection.Close();
             }
 
@@ -174,7 +181,6 @@ namespace hyacinthuslux
                         comboBoxClients.Items.Add(id);
                     }
                 }
-
                 connection.Close();
             }
 
@@ -198,15 +204,24 @@ namespace hyacinthuslux
                 if (comboBoxProducts.SelectedItem != null && numQuantity.Value > 0)
                 {
                     string productName = (string)comboBoxProducts.SelectedItem;
-                    Product selectedProduct = SubtractProduct(productName);
                     int quantity = (int)numQuantity.Value;
 
-                    _delivery.DeliveryProducts.Add(selectedProduct);
-                    _delivery.deliveryQuantities.Add(quantity);
+                    // Check if enough stock is available
+                    if (IsStockAvailable(productName, quantity))
+                    {
+                        Product selectedProduct = SubtractProduct(productName);
 
-                    ResetFormForProducts();
-                    DisplayProducts();
-                    UpdateTotalValue();
+                        _delivery.DeliveryProducts.Add(selectedProduct);
+                        _delivery.deliveryQuantities.Add(quantity);
+
+                        ResetFormForProducts();
+                        DisplayProducts();
+                        UpdateTotalValue();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Not enough stock available for this product.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             else
@@ -217,14 +232,29 @@ namespace hyacinthuslux
                     Product updatedProduct = SubtractProduct(productName);
                     int quantity = (int)numQuantity.Value;
 
-                    _delivery.DeliveryProducts[_editIndex] = updatedProduct;
-                    _delivery.deliveryQuantities[_editIndex] = quantity;
+                    // Check if enough stock is available for the update
+                    int originalQuantity = _delivery.deliveryQuantities[_editIndex];
+                    if (IsStockAvailable(productName, quantity - originalQuantity))
+                    {
+                        _delivery.DeliveryProducts[_editIndex] = updatedProduct;
+                        _delivery.deliveryQuantities[_editIndex] = quantity;
 
-                    ResetFormForProducts();
-                    DisplayProducts();
-                    UpdateTotalValue();
+                        ResetFormForProducts();
+                        DisplayProducts();
+                        UpdateTotalValue();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Not enough stock available for this product.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
+        }
+
+        private bool IsStockAvailable(string productName, int requiredQuantity)
+        {
+            int currentStock = _remainingProductStocks.ContainsKey(productName) ? _remainingProductStocks[productName] : 0;
+            return requiredQuantity <= currentStock;
         }
 
         private void DisplayProducts()
@@ -264,7 +294,6 @@ namespace hyacinthuslux
                         };
                     }
                 }
-
                 connection.Close();
             }
             return null;
@@ -323,13 +352,23 @@ namespace hyacinthuslux
                 Product updatedProduct = SubtractProduct(productName);
                 int quantity = (int)numQuantity.Value;
 
-                _delivery.DeliveryProducts[_editIndex] = updatedProduct;
-                _delivery.deliveryQuantities[_editIndex] = quantity;
+                // Check if enough stock is available for the update
+                int originalQuantity = _delivery.deliveryQuantities[_editIndex];
+                if (_remainingProductStocks[productName] + originalQuantity >= quantity)
+                {
+                    _delivery.DeliveryProducts[_editIndex] = updatedProduct;
+                    _remainingProductStocks[productName] += originalQuantity - quantity;  // Adjust stock
+                    _delivery.deliveryQuantities[_editIndex] = quantity;
 
-                ResetFormForProducts();
-                DisplayProducts();
-                UpdateTotalValue();
-                _editIndex = -1;
+                    ResetFormForProducts();
+                    DisplayProducts();
+                    UpdateTotalValue();
+                    _editIndex = -1;
+                }
+                else
+                {
+                    MessageBox.Show("Not enough stock available for this product.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
@@ -347,6 +386,7 @@ namespace hyacinthuslux
                 _delivery.deliveryDate = dtpDeliveryDate.Value;
 
                 MessageBox.Show("Delivery saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DeliverySaved?.Invoke(this, new DeliveryEventArgs(_delivery));
                 this.Close();
             }
             else
@@ -365,9 +405,18 @@ namespace hyacinthuslux
 
                 if (_delivery.DeliveryProducts.Count > selectedIndex && _delivery.deliveryQuantities.Count > selectedIndex)
                 {
+                    string productName = _delivery.DeliveryProducts[selectedIndex].productName;
+                    int quantity = _delivery.deliveryQuantities[selectedIndex];
+
                     _delivery.DeliveryProducts.RemoveAt(selectedIndex);
                     _delivery.deliveryQuantities.RemoveAt(selectedIndex);
-                    UpdateTotalValue(); // Update total value
+
+                    if (_remainingProductStocks.ContainsKey(productName))
+                    {
+                        _remainingProductStocks[productName] += quantity; // Revert stock
+                    }
+
+                    UpdateTotalValue();
                 }
                 else
                 {
@@ -399,7 +448,6 @@ namespace hyacinthuslux
         {
             decimal productSubtotal = 0;
 
-            // Calculate subtotal of products
             for (int i = 0; i < _delivery.DeliveryProducts.Count; i++)
             {
                 productSubtotal += _delivery.DeliveryProducts[i].productPrice * _delivery.deliveryQuantities[i];
@@ -407,15 +455,12 @@ namespace hyacinthuslux
 
             tbSubtotal.Text = productSubtotal.ToString("C2");
 
-            // Update delivery cost
             decimal deliveryCost = (decimal)Delivery.ReturnCostBasedOnDeliveryMethod(_delivery);
             tbDeliveryCost.Text = deliveryCost.ToString("C2");
 
-            // Calculate total value
             decimal totalValue = productSubtotal + deliveryCost;
             tbTotal.Text = totalValue.ToString("C2");
         }
-
 
         private void label7_Click(object sender, EventArgs e)
         {
@@ -428,7 +473,7 @@ namespace hyacinthuslux
             {
                 EnumCourier.CourierEnum val = (EnumCourier.CourierEnum)Enum.Parse(typeof(EnumCourier.CourierEnum), comboBoxCourierMethod.SelectedItem.ToString());
                 _delivery.deliveryMethod = val;
-                UpdateTotalValue(); 
+                UpdateTotalValue();
             }
         }
 

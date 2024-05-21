@@ -34,7 +34,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1157, 718);
             this.Name = "UserControlChart";
             this.Text = "UserControlChart";
             this.Load += new System.EventHandler(this.UserControlChart_Load);

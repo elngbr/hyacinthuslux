@@ -64,7 +64,7 @@
             // comboBoxClients
             // 
             this.comboBoxClients.FormattingEnabled = true;
-            this.comboBoxClients.Location = new System.Drawing.Point(125, 9);
+            this.comboBoxClients.Location = new System.Drawing.Point(125, 190);
             this.comboBoxClients.Name = "comboBoxClients";
             this.comboBoxClients.Size = new System.Drawing.Size(144, 24);
             this.comboBoxClients.TabIndex = 4;
@@ -72,7 +72,8 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(70, 12);
+            this.label1.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label1.Location = new System.Drawing.Point(70, 190);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 16);
             this.label1.TabIndex = 5;
@@ -80,14 +81,14 @@
             // 
             // dtpDeliveryDate
             // 
-            this.dtpDeliveryDate.Location = new System.Drawing.Point(125, 66);
+            this.dtpDeliveryDate.Location = new System.Drawing.Point(125, 232);
             this.dtpDeliveryDate.Name = "dtpDeliveryDate";
             this.dtpDeliveryDate.Size = new System.Drawing.Size(144, 22);
             this.dtpDeliveryDate.TabIndex = 6;
             // 
             // tbLocationDel
             // 
-            this.tbLocationDel.Location = new System.Drawing.Point(125, 118);
+            this.tbLocationDel.Location = new System.Drawing.Point(125, 276);
             this.tbLocationDel.Name = "tbLocationDel";
             this.tbLocationDel.Size = new System.Drawing.Size(144, 22);
             this.tbLocationDel.TabIndex = 7;
@@ -95,7 +96,8 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(26, 66);
+            this.label2.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label2.Location = new System.Drawing.Point(30, 237);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 16);
             this.label2.TabIndex = 8;
@@ -104,7 +106,8 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(52, 118);
+            this.label3.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label3.Location = new System.Drawing.Point(52, 279);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 16);
             this.label3.TabIndex = 9;
@@ -151,7 +154,7 @@
             this.Quantity,
             this.UnitPrice,
             this.Total});
-            this.dgvProductsForAnOrder.Location = new System.Drawing.Point(288, 9);
+            this.dgvProductsForAnOrder.Location = new System.Drawing.Point(360, 29);
             this.dgvProductsForAnOrder.Name = "dgvProductsForAnOrder";
             this.dgvProductsForAnOrder.RowHeadersWidth = 51;
             this.dgvProductsForAnOrder.RowTemplate.Height = 24;
@@ -190,52 +193,57 @@
             // 
             // buttonDeleteProd
             // 
-            this.buttonDeleteProd.Location = new System.Drawing.Point(445, 355);
+            this.buttonDeleteProd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.buttonDeleteProd.Location = new System.Drawing.Point(517, 366);
             this.buttonDeleteProd.Name = "buttonDeleteProd";
             this.buttonDeleteProd.Size = new System.Drawing.Size(144, 48);
             this.buttonDeleteProd.TabIndex = 17;
             this.buttonDeleteProd.Text = "Delete ProdOrder";
-            this.buttonDeleteProd.UseVisualStyleBackColor = true;
+            this.buttonDeleteProd.UseVisualStyleBackColor = false;
             this.buttonDeleteProd.Click += new System.EventHandler(this.buttonDeleteProd_Click);
             // 
             // buttonSaveOrder
             // 
-            this.buttonSaveOrder.Location = new System.Drawing.Point(595, 355);
+            this.buttonSaveOrder.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.buttonSaveOrder.Location = new System.Drawing.Point(667, 366);
             this.buttonSaveOrder.Name = "buttonSaveOrder";
             this.buttonSaveOrder.Size = new System.Drawing.Size(134, 48);
             this.buttonSaveOrder.TabIndex = 18;
             this.buttonSaveOrder.Text = "Save ProdOrder";
-            this.buttonSaveOrder.UseVisualStyleBackColor = true;
+            this.buttonSaveOrder.UseVisualStyleBackColor = false;
             this.buttonSaveOrder.Click += new System.EventHandler(this.buttonSaveOrder_Click);
             // 
             // btnAddProdOrder
             // 
-            this.btnAddProdOrder.Location = new System.Drawing.Point(735, 355);
+            this.btnAddProdOrder.BackColor = System.Drawing.Color.Beige;
+            this.btnAddProdOrder.Location = new System.Drawing.Point(807, 366);
             this.btnAddProdOrder.Name = "btnAddProdOrder";
             this.btnAddProdOrder.Size = new System.Drawing.Size(156, 48);
             this.btnAddProdOrder.TabIndex = 19;
             this.btnAddProdOrder.Text = "Add ProdOrder";
-            this.btnAddProdOrder.UseVisualStyleBackColor = true;
+            this.btnAddProdOrder.UseVisualStyleBackColor = false;
             this.btnAddProdOrder.Click += new System.EventHandler(this.btnAddProdOrder_Click);
             // 
             // buttonCancel
             // 
+            this.buttonCancel.BackColor = System.Drawing.Color.Pink;
             this.buttonCancel.Location = new System.Drawing.Point(12, 661);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(238, 46);
             this.buttonCancel.TabIndex = 20;
             this.buttonCancel.Text = "Cancel";
-            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.UseVisualStyleBackColor = false;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonOk
             // 
+            this.buttonOk.BackColor = System.Drawing.Color.Aquamarine;
             this.buttonOk.Location = new System.Drawing.Point(12, 609);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(238, 46);
             this.buttonOk.TabIndex = 21;
             this.buttonOk.Text = "Ok";
-            this.buttonOk.UseVisualStyleBackColor = true;
+            this.buttonOk.UseVisualStyleBackColor = false;
             this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
             // tbTotal
@@ -261,7 +269,8 @@
             // lbdeliveryMethod
             // 
             this.lbdeliveryMethod.AutoSize = true;
-            this.lbdeliveryMethod.Location = new System.Drawing.Point(12, 182);
+            this.lbdeliveryMethod.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.lbdeliveryMethod.Location = new System.Drawing.Point(7, 314);
             this.lbdeliveryMethod.Name = "lbdeliveryMethod";
             this.lbdeliveryMethod.Size = new System.Drawing.Size(103, 16);
             this.lbdeliveryMethod.TabIndex = 24;
@@ -270,7 +279,7 @@
             // comboBoxCourierMethod
             // 
             this.comboBoxCourierMethod.FormattingEnabled = true;
-            this.comboBoxCourierMethod.Location = new System.Drawing.Point(125, 179);
+            this.comboBoxCourierMethod.Location = new System.Drawing.Point(125, 314);
             this.comboBoxCourierMethod.Name = "comboBoxCourierMethod";
             this.comboBoxCourierMethod.Size = new System.Drawing.Size(144, 24);
             this.comboBoxCourierMethod.TabIndex = 25;
@@ -310,18 +319,22 @@
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Orange;
+            this.label8.Font = new System.Drawing.Font("Times New Roman", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(776, 521);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(85, 16);
+            this.label8.Size = new System.Drawing.Size(79, 16);
             this.label8.TabIndex = 29;
             this.label8.Text = "delivery Cost";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(805, 552);
+            this.label9.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(793, 549);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(56, 16);
+            this.label9.Size = new System.Drawing.Size(64, 16);
             this.label9.TabIndex = 30;
             this.label9.Text = "Subtotal";
             // 
@@ -329,6 +342,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(1186, 719);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);

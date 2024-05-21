@@ -8,18 +8,20 @@
         {
             this.chartPanel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
-            // 
-            // chartPanel
-            // 
+            
+
+
+            ///////////////PANEEEEEEEEEEEEEEEEEEEEEEEEEEEL
+
             this.chartPanel.BackColor = System.Drawing.Color.White;
             this.chartPanel.Location = new System.Drawing.Point(50, 50);
             this.chartPanel.Name = "chartPanel";
             this.chartPanel.Size = new System.Drawing.Size(700, 300);
             this.chartPanel.TabIndex = 0;
             this.chartPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.CouriersBarChart_Paint);
-            // 
-            // BarChartCouriers
-            // 
+           
+
+
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);

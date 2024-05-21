@@ -55,6 +55,7 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.buttonPrintPreview = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numStock)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -165,32 +166,35 @@
             // 
             // btnDeleteProduct
             // 
+            this.btnDeleteProduct.BackColor = System.Drawing.Color.OrangeRed;
             this.btnDeleteProduct.Location = new System.Drawing.Point(81, 556);
             this.btnDeleteProduct.Name = "btnDeleteProduct";
-            this.btnDeleteProduct.Size = new System.Drawing.Size(114, 31);
+            this.btnDeleteProduct.Size = new System.Drawing.Size(114, 69);
             this.btnDeleteProduct.TabIndex = 10;
             this.btnDeleteProduct.Text = "&Delete";
-            this.btnDeleteProduct.UseVisualStyleBackColor = true;
+            this.btnDeleteProduct.UseVisualStyleBackColor = false;
             this.btnDeleteProduct.Click += new System.EventHandler(this.btnDeleteProduct_Click);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(252, 556);
+            this.btnSave.BackColor = System.Drawing.Color.LightBlue;
+            this.btnSave.Location = new System.Drawing.Point(201, 556);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(120, 31);
+            this.btnSave.Size = new System.Drawing.Size(120, 69);
             this.btnSave.TabIndex = 11;
             this.btnSave.Text = "&Save";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(438, 556);
+            this.btnAdd.BackColor = System.Drawing.Color.Aquamarine;
+            this.btnAdd.Location = new System.Drawing.Point(327, 556);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(120, 31);
+            this.btnAdd.Size = new System.Drawing.Size(112, 69);
             this.btnAdd.TabIndex = 12;
             this.btnAdd.Text = "&Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // ckBAvailability
@@ -213,6 +217,7 @@
             // 
             // toolStrip1
             // 
+            this.toolStrip1.BackColor = System.Drawing.Color.MediumPurple;
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripSeparator1,
@@ -251,6 +256,7 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.BackColor = System.Drawing.Color.DeepPink;
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
@@ -278,19 +284,32 @@
             // 
             // buttonPrintPreview
             // 
-            this.buttonPrintPreview.Location = new System.Drawing.Point(620, 556);
+            this.buttonPrintPreview.BackColor = System.Drawing.Color.DarkTurquoise;
+            this.buttonPrintPreview.Location = new System.Drawing.Point(445, 556);
             this.buttonPrintPreview.Name = "buttonPrintPreview";
-            this.buttonPrintPreview.Size = new System.Drawing.Size(124, 31);
+            this.buttonPrintPreview.Size = new System.Drawing.Size(108, 69);
             this.buttonPrintPreview.TabIndex = 17;
             this.buttonPrintPreview.Text = "Print Preview";
-            this.buttonPrintPreview.UseVisualStyleBackColor = true;
+            this.buttonPrintPreview.UseVisualStyleBackColor = false;
             this.buttonPrintPreview.Click += new System.EventHandler(this.buttonPrintPreview_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(559, 556);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(109, 69);
+            this.btnCancel.TabIndex = 19;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // Product_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Linen;
             this.ClientSize = new System.Drawing.Size(869, 719);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.buttonPrintPreview);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
@@ -349,5 +368,6 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.Button buttonPrintPreview;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

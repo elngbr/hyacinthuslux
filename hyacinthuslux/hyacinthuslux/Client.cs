@@ -50,5 +50,10 @@ namespace hyacinthuslux
         {
             return this.clientId.CompareTo(other.clientId);
         }
+
+        public override string ToString()
+        {
+            return $"{clientFirstName} {clientLastName}";
+        }
     }
 }

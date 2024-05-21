@@ -30,6 +30,14 @@ namespace hyacinthuslux
             }
         }
 
+        public decimal Total
+        {
+            get
+            {
+                return GetTotalValue();
+            }
+        }
+
         public Delivery()
         {
             deliveryDate = DateTime.Now;

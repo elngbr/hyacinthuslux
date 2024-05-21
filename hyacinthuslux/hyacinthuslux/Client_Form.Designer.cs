@@ -36,7 +36,6 @@
             this.tbLastName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -134,15 +133,6 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "Last Name";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(103, 506);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(18, 16);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Id";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -185,6 +175,7 @@
             this.numId.Name = "numId";
             this.numId.Size = new System.Drawing.Size(144, 22);
             this.numId.TabIndex = 0;
+            this.numId.ValueChanged += new System.EventHandler(this.numId_ValueChanged);
             this.numId.Validating += new System.ComponentModel.CancelEventHandler(this.numId_Validating);
             // 
             // numLoy
@@ -198,32 +189,35 @@
             // 
             // bntAddClient
             // 
+            this.bntAddClient.BackColor = System.Drawing.Color.MediumOrchid;
             this.bntAddClient.Location = new System.Drawing.Point(28, 577);
             this.bntAddClient.Name = "bntAddClient";
             this.bntAddClient.Size = new System.Drawing.Size(196, 85);
             this.bntAddClient.TabIndex = 16;
             this.bntAddClient.Text = "&Add";
-            this.bntAddClient.UseVisualStyleBackColor = true;
+            this.bntAddClient.UseVisualStyleBackColor = false;
             this.bntAddClient.Click += new System.EventHandler(this.bntAdd_Click);
             // 
             // btnSaveClient
             // 
+            this.btnSaveClient.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnSaveClient.Location = new System.Drawing.Point(295, 577);
             this.btnSaveClient.Name = "btnSaveClient";
             this.btnSaveClient.Size = new System.Drawing.Size(180, 85);
             this.btnSaveClient.TabIndex = 17;
             this.btnSaveClient.Text = "&Save";
-            this.btnSaveClient.UseVisualStyleBackColor = true;
+            this.btnSaveClient.UseVisualStyleBackColor = false;
             this.btnSaveClient.Click += new System.EventHandler(this.btnSaveClient_Click);
             // 
             // btnDeleteClient
             // 
+            this.btnDeleteClient.BackColor = System.Drawing.Color.PaleVioletRed;
             this.btnDeleteClient.Location = new System.Drawing.Point(538, 577);
             this.btnDeleteClient.Name = "btnDeleteClient";
             this.btnDeleteClient.Size = new System.Drawing.Size(182, 85);
             this.btnDeleteClient.TabIndex = 18;
             this.btnDeleteClient.Text = "&Delete";
-            this.btnDeleteClient.UseVisualStyleBackColor = true;
+            this.btnDeleteClient.UseVisualStyleBackColor = false;
             this.btnDeleteClient.Click += new System.EventHandler(this.btnDeleteClient_Click);
             // 
             // lvClients
@@ -237,6 +231,7 @@
             this.Phone,
             this.LoyaltyPoints});
             this.lvClients.ContextMenuStrip = this.contextMenuStripXML;
+            this.lvClients.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvClients.FullRowSelect = true;
             this.lvClients.HideSelection = false;
             this.lvClients.Location = new System.Drawing.Point(12, 88);
@@ -316,7 +311,7 @@
             this.toolStripMenuBinClient});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1180, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1180, 30);
             this.menuStrip1.TabIndex = 20;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -326,7 +321,7 @@
             this.serializeToolStripMenuItem,
             this.deserializeToolStripMenuItem});
             this.toolStripMenuBinClient.Name = "toolStripMenuBinClient";
-            this.toolStripMenuBinClient.Size = new System.Drawing.Size(124, 24);
+            this.toolStripMenuBinClient.Size = new System.Drawing.Size(124, 26);
             this.toolStripMenuBinClient.Text = "Serialize Binary";
             // 
             // serializeToolStripMenuItem
@@ -365,18 +360,20 @@
             // 
             // btnTXT
             // 
-            this.btnTXT.Location = new System.Drawing.Point(754, 577);
+            this.btnTXT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnTXT.Location = new System.Drawing.Point(771, 577);
             this.btnTXT.Name = "btnTXT";
             this.btnTXT.Size = new System.Drawing.Size(164, 85);
             this.btnTXT.TabIndex = 23;
             this.btnTXT.Text = "Export as txt";
-            this.btnTXT.UseVisualStyleBackColor = true;
+            this.btnTXT.UseVisualStyleBackColor = false;
             this.btnTXT.Click += new System.EventHandler(this.btnTXT_Click);
             // 
             // Client_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.MediumPurple;
             this.ClientSize = new System.Drawing.Size(1180, 724);
             this.ContextMenuStrip = this.contextMenuStripXML;
             this.Controls.Add(this.btnTXT);
@@ -392,7 +389,6 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbLastName);
@@ -424,7 +420,6 @@
         private System.Windows.Forms.TextBox tbLastName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;

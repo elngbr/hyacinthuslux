@@ -60,6 +60,9 @@ namespace hyacinthuslux
             }
         }
 
+        private void CouriersDistribution_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }

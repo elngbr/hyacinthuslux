@@ -25,6 +25,7 @@ namespace hyacinthuslux
         {
             InitializeComponent();
             clients = new List<Client>();
+            numId.Visible = false;
         }
 
         private void Client_Form_Load(object sender, EventArgs e)
@@ -32,6 +33,7 @@ namespace hyacinthuslux
             //clients = new List<Client>();
             ReadClient();
             DisplayParticipants();
+            
         }
 
         private void createClient(Client client)
@@ -362,17 +364,18 @@ namespace hyacinthuslux
                 errorProvider.SetError(tbPhoneNumber, "It's compulsory to have a phone number!");
             }
 
-            if (String.IsNullOrEmpty(tbPhoneNumber.Text))
+            else if (String.IsNullOrEmpty(tbPhoneNumber.Text))
             {
                 e.Cancel = true;
                 errorProvider.SetError(tbPhoneNumber, "It's compulsory to have a phone number!");
             }
 
-            if(tbPhoneNumber.Text.Length>15|| tbPhoneNumber.Text.Length<7)
+            else if(tbPhoneNumber.Text.Length>15|| tbPhoneNumber.Text.Length<7)
             {
                 e.Cancel = true;
                 errorProvider.SetError(tbPhoneNumber, "Invalid phone number length!");
             }
+            
         }
 
         private void numLoy_ValueChanged(object sender, EventArgs e)
@@ -530,6 +533,11 @@ namespace hyacinthuslux
                 // Call the export method
                 ExportReportAsTxt(clients, filePath);
             }
+
+        }
+
+        private void numId_ValueChanged(object sender, EventArgs e)
+        {
 
         }
     }

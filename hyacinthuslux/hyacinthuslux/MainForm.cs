@@ -122,5 +122,50 @@ namespace hyacinthuslux
             form.Show();
         }
 
+        private void btnUserCtrl_Click(object sender, EventArgs e)
+        {
+            
+            UserControlChart userControlChart = new UserControlChart();
+
+           
+            userControlChart.Show();
+
+            
+            List<string> labelsList = new List<string>();
+            List<int> dataList = new List<int>();
+
+            
+            foreach (var delivery in deliveries)
+            {
+                
+                string deliveryMethodString = delivery.deliveryMethod.ToString();
+
+               
+                int index = labelsList.IndexOf(deliveryMethodString);
+                if (index != -1)
+                {
+                    
+                    dataList[index]++;
+                }
+                else
+                {
+                    
+                    labelsList.Add(deliveryMethodString);
+                    dataList.Add(1);
+                }
+            }
+
+           
+            string[] labelsArray = labelsList.ToArray();
+            int[] dataArray = dataList.ToArray();
+
+            
+            userControlChart.SetChart(labelsArray, dataArray);
+        }
+
+
+
+
+
     }
 }

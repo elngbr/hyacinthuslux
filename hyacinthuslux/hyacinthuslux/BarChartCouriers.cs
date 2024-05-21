@@ -32,7 +32,6 @@ namespace hyacinthuslux
             int legendWidth = 200;
             int legendHeight = 20;
 
-            // Determine the maximum value to scale the bars
             int maxValue = courierDistribution.Max(kv => kv.Value);
 
             Random rand = new Random();

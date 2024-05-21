@@ -23,10 +23,10 @@ namespace hyacinthuslux
             Controls.Add(courierDistributionChart);
         }
 
-        // Updated SetChart method to pass arrays of strings and integers to the CourierDistributionChart control
+        
         public void SetChart(string[] labels, int[] data)
         {
-            // Pass the data to the CourierDistributionChart control
+            
             courierDistributionChart.SetData(labels, data);
         }
     }

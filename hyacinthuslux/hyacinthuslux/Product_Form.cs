@@ -16,6 +16,7 @@ using System.Xml.Serialization;
 
 namespace hyacinthuslux
 {
+
     public partial class Product_Form : Form
     {
         private const string ConnectionString = "Data Source=ClientDatabase.sqlite";
@@ -55,30 +56,30 @@ namespace hyacinthuslux
 
         private void readProduct()
         {
-            string query = "Select* from Product;";
+            string query = "SELECT * FROM Product;";
 
-            using(SQLiteConnection connection=new SQLiteConnection(ConnectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
             {
                 connection.Open();
                 SQLiteCommand command = new SQLiteCommand(query, connection);
 
                 using (var reader = command.ExecuteReader())
                 {
-                    while(reader.Read())
+                    while (reader.Read())
                     {
                         string name = (string)reader["productName"];
                         long price = (long)reader["productPrice"];
                         long stock = (long)reader["productStock"];
-                        bool av = bool.TryParse(reader["isAvailable"].ToString(), out av);
+                        bool av = reader["isAvailable"].ToString() == "1"; // Convert "1" to true and "0" to false
                         FlowerEnum f = Enum.TryParse(reader["productType"].ToString(), out FlowerEnum parsedEnum) ? parsedEnum : FlowerEnum.Default;
 
-
-                        Product product =new Product(price, name, av,f, (int)stock);
+                        Product product = new Product(price, name, av, f, (int)stock);
                         products.Add(product);
                     }
                 }
             }
         }
+
 
         private void updateProduct(Product product, string oldname)
         {

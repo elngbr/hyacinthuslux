@@ -27,10 +27,7 @@ namespace hyacinthuslux
             int startX = 50;
             int startY = 50;
             int maxHeight = 300;
-            int legendX = 500;
-            int legendY = 50;
-            int legendWidth = 200;
-            int legendHeight = 20;
+           
 
             int maxValue = courierDistribution.Max(kv => kv.Value);///retrieving the max value
 
@@ -50,12 +47,9 @@ namespace hyacinthuslux
                 //take care how you explain this
                 graphics.DrawString(text, this.Font, Brushes.Black, textLocation);
 
-                Rectangle legendRect = new Rectangle(legendX, legendY, legendWidth, legendHeight);
-                graphics.FillRectangle(new SolidBrush(barColor), legendRect);
-                graphics.DrawString($"{kvp.Key.ToString()} - {kvp.Value}", this.Font, Brushes.Black, legendX + legendWidth + 5, legendY);
-
+               
                 startX += barWidth + barSpacing;
-                legendY += legendHeight + 5;
+              
             }
         }
 

@@ -6,11 +6,11 @@ using System.Windows.Forms;
 
 namespace hyacinthuslux
 {
-    public partial class CouriersDistribution : Form
+    public partial class CouriersDistributionPieChart : Form
     {
         private Dictionary<EnumCourier.CourierEnum, int> courierDistribution;
 
-        public CouriersDistribution(Dictionary<EnumCourier.CourierEnum, int> courierDistribution)
+        public CouriersDistributionPieChart(Dictionary<EnumCourier.CourierEnum, int> courierDistribution)
         {
             InitializeComponent();
             this.courierDistribution = courierDistribution;

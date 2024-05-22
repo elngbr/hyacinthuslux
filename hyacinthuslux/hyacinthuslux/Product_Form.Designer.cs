@@ -167,7 +167,7 @@
             // btnDeleteProduct
             // 
             this.btnDeleteProduct.BackColor = System.Drawing.Color.OrangeRed;
-            this.btnDeleteProduct.Location = new System.Drawing.Point(81, 556);
+            this.btnDeleteProduct.Location = new System.Drawing.Point(270, 569);
             this.btnDeleteProduct.Name = "btnDeleteProduct";
             this.btnDeleteProduct.Size = new System.Drawing.Size(114, 69);
             this.btnDeleteProduct.TabIndex = 10;
@@ -178,7 +178,7 @@
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.LightBlue;
-            this.btnSave.Location = new System.Drawing.Point(201, 556);
+            this.btnSave.Location = new System.Drawing.Point(144, 569);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(120, 69);
             this.btnSave.TabIndex = 11;
@@ -189,7 +189,7 @@
             // btnAdd
             // 
             this.btnAdd.BackColor = System.Drawing.Color.Aquamarine;
-            this.btnAdd.Location = new System.Drawing.Point(327, 556);
+            this.btnAdd.Location = new System.Drawing.Point(22, 569);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(112, 69);
             this.btnAdd.TabIndex = 12;
@@ -285,7 +285,7 @@
             // buttonPrintPreview
             // 
             this.buttonPrintPreview.BackColor = System.Drawing.Color.DarkTurquoise;
-            this.buttonPrintPreview.Location = new System.Drawing.Point(445, 556);
+            this.buttonPrintPreview.Location = new System.Drawing.Point(507, 569);
             this.buttonPrintPreview.Name = "buttonPrintPreview";
             this.buttonPrintPreview.Size = new System.Drawing.Size(108, 69);
             this.buttonPrintPreview.TabIndex = 17;
@@ -295,7 +295,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(559, 556);
+            this.btnCancel.Location = new System.Drawing.Point(392, 569);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(109, 69);
             this.btnCancel.TabIndex = 19;

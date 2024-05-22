@@ -153,19 +153,21 @@ namespace hyacinthuslux
 
                 if (result == DialogResult.Yes)
                 {
-                    string clientName = selectedRow.Cells[0].Value.ToString();
-                    int clientId = (int)selectedRow.Cells[1].Value;
-                    var deliveryToRemove = _deliveries.FirstOrDefault(d => d.DeliveryClient.clientId == clientId && d.DeliveryClient.clientFirstName + " " + d.DeliveryClient.clientLastName == clientName);
+                    string clientName = selectedRow.Cells["DeliveryClientColumn"].Value.ToString();
+                    var deliveryToRemove = _deliveries.FirstOrDefault(d => d.DeliveryClient.clientFirstName + " " + d.DeliveryClient.clientLastName == clientName);
 
                     if (deliveryToRemove != null)
                     {
                         _deliveries.Remove(deliveryToRemove);
+                        MessageBox.Show("Delivery deleted successfully.", "Deletion Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        UpdateRemainingProductStocks();
+                        OnPropertyChanged(nameof(_deliveries));
                     }
-
-                    MessageBox.Show("Delivery deleted successfully.", "Deletion Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    UpdateRemainingProductStocks();
-                    OnPropertyChanged(nameof(_deliveries));
+                    else
+                    {
+                        MessageBox.Show("Delivery not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             else
@@ -174,13 +176,14 @@ namespace hyacinthuslux
             }
         }
 
+
         private void CouriersPieChart_Click(object sender, EventArgs e)
         {
             var courierDistribution = _deliveries
                 .GroupBy(d => d.deliveryMethod)
                 .ToDictionary(g => g.Key, g => g.Count());
 
-            CouriersDistribution form = new CouriersDistribution(courierDistribution);
+            CouriersDistributionPieChart form = new CouriersDistributionPieChart(courierDistribution);
             form.Show();
         }
 

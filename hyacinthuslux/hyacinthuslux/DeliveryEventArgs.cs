@@ -1,16 +1,14 @@
-﻿using hyacinthuslux;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
-public class DeliveryEventArgs : EventArgs
+namespace hyacinthuslux
 {
-    public Delivery Delivery { get; }
-
-    public DeliveryEventArgs(Delivery delivery)
+    public class DeliveryEventArgs : EventArgs
     {
-        Delivery = delivery;
+        public Delivery Delivery { get; private set; }
+
+        public DeliveryEventArgs(Delivery delivery)
+        {
+            Delivery = delivery;
+        }
     }
 }

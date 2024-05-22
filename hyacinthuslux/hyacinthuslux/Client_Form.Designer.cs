@@ -76,11 +76,12 @@
             this.tbFirstName.Name = "tbFirstName";
             this.tbFirstName.Size = new System.Drawing.Size(144, 22);
             this.tbFirstName.TabIndex = 1;
+            this.tbFirstName.TextChanged += new System.EventHandler(this.tbFirstName_TextChanged);
             this.tbFirstName.Validating += new System.ComponentModel.CancelEventHandler(this.tbFirstName_Validating);
             // 
             // tbPhoneNumber
             // 
-            this.tbPhoneNumber.Location = new System.Drawing.Point(783, 455);
+            this.tbPhoneNumber.Location = new System.Drawing.Point(783, 458);
             this.tbPhoneNumber.Name = "tbPhoneNumber";
             this.tbPhoneNumber.Size = new System.Drawing.Size(152, 22);
             this.tbPhoneNumber.TabIndex = 5;
@@ -118,7 +119,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(49, 410);
+            this.label1.Location = new System.Drawing.Point(49, 416);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 16);
             this.label1.TabIndex = 7;
@@ -190,7 +191,7 @@
             // bntAddClient
             // 
             this.bntAddClient.BackColor = System.Drawing.Color.MediumOrchid;
-            this.bntAddClient.Location = new System.Drawing.Point(28, 577);
+            this.bntAddClient.Location = new System.Drawing.Point(84, 616);
             this.bntAddClient.Name = "bntAddClient";
             this.bntAddClient.Size = new System.Drawing.Size(196, 85);
             this.bntAddClient.TabIndex = 16;
@@ -201,7 +202,7 @@
             // btnSaveClient
             // 
             this.btnSaveClient.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnSaveClient.Location = new System.Drawing.Point(295, 577);
+            this.btnSaveClient.Location = new System.Drawing.Point(286, 616);
             this.btnSaveClient.Name = "btnSaveClient";
             this.btnSaveClient.Size = new System.Drawing.Size(180, 85);
             this.btnSaveClient.TabIndex = 17;
@@ -212,7 +213,7 @@
             // btnDeleteClient
             // 
             this.btnDeleteClient.BackColor = System.Drawing.Color.PaleVioletRed;
-            this.btnDeleteClient.Location = new System.Drawing.Point(538, 577);
+            this.btnDeleteClient.Location = new System.Drawing.Point(642, 616);
             this.btnDeleteClient.Name = "btnDeleteClient";
             this.btnDeleteClient.Size = new System.Drawing.Size(182, 85);
             this.btnDeleteClient.TabIndex = 18;
@@ -306,12 +307,13 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuBinClient});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1180, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1180, 28);
             this.menuStrip1.TabIndex = 20;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -321,7 +323,7 @@
             this.serializeToolStripMenuItem,
             this.deserializeToolStripMenuItem});
             this.toolStripMenuBinClient.Name = "toolStripMenuBinClient";
-            this.toolStripMenuBinClient.Size = new System.Drawing.Size(124, 26);
+            this.toolStripMenuBinClient.Size = new System.Drawing.Size(124, 24);
             this.toolStripMenuBinClient.Text = "Serialize Binary";
             // 
             // serializeToolStripMenuItem
@@ -340,28 +342,30 @@
             // 
             // btnCopy
             // 
+            this.btnCopy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnCopy.Location = new System.Drawing.Point(295, 413);
             this.btnCopy.Name = "btnCopy";
             this.btnCopy.Size = new System.Drawing.Size(75, 28);
             this.btnCopy.TabIndex = 21;
             this.btnCopy.Text = "Copy";
-            this.btnCopy.UseVisualStyleBackColor = true;
+            this.btnCopy.UseVisualStyleBackColor = false;
             this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
             // 
             // btnPaste
             // 
+            this.btnPaste.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnPaste.Location = new System.Drawing.Point(376, 413);
             this.btnPaste.Name = "btnPaste";
             this.btnPaste.Size = new System.Drawing.Size(75, 28);
             this.btnPaste.TabIndex = 22;
             this.btnPaste.Text = "Paste";
-            this.btnPaste.UseVisualStyleBackColor = true;
+            this.btnPaste.UseVisualStyleBackColor = false;
             this.btnPaste.Click += new System.EventHandler(this.btnPaste_Click);
             // 
             // btnTXT
             // 
             this.btnTXT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnTXT.Location = new System.Drawing.Point(771, 577);
+            this.btnTXT.Location = new System.Drawing.Point(472, 616);
             this.btnTXT.Name = "btnTXT";
             this.btnTXT.Size = new System.Drawing.Size(164, 85);
             this.btnTXT.TabIndex = 23;
@@ -373,7 +377,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.MediumPurple;
+            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(1180, 724);
             this.ContextMenuStrip = this.contextMenuStripXML;
             this.Controls.Add(this.btnTXT);

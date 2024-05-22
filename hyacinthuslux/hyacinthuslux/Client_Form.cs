@@ -202,7 +202,7 @@ namespace hyacinthuslux
                 selectedClient.clientLastName = tbLastName.Text;
                 selectedClient.clientEmail = tbEmail.Text;
                 selectedClient.clientAddress = tbAddress.Text;
-                selectedClient.clientPhoneNumber = Phone.Text;
+                selectedClient.clientPhoneNumber = tbPhoneNumber.Text;
                 selectedClient.clientLoyaltyPoints = (double)numLoy.Value;
 
                 lvClients.SelectedItems[0].Text = numId.Value.ToString();
@@ -210,7 +210,7 @@ namespace hyacinthuslux
                 lvClients.SelectedItems[0].SubItems[2].Text = tbLastName.Text;
                 lvClients.SelectedItems[0].SubItems[3].Text = tbEmail.Text;
                 lvClients.SelectedItems[0].SubItems[4].Text = tbAddress.Text;
-                lvClients.SelectedItems[0].SubItems[5].Text = Phone.Text;
+                lvClients.SelectedItems[0].SubItems[5].Text = tbPhoneNumber.Text;
                 lvClients.SelectedItems[0].SubItems[6].Text = numLoy.Value.ToString();
                 updateClient(selectedClient);
 
@@ -228,6 +228,7 @@ namespace hyacinthuslux
                 //clients.Remove(_client);
                 
                 DisplayParticipants();
+                ResetForm();
 
             }
         }
@@ -363,20 +364,18 @@ namespace hyacinthuslux
                 e.Cancel = true;
                 errorProvider.SetError(tbPhoneNumber, "It's compulsory to have a phone number!");
             }
-
-            else if (String.IsNullOrEmpty(tbPhoneNumber.Text))
-            {
-                e.Cancel = true;
-                errorProvider.SetError(tbPhoneNumber, "It's compulsory to have a phone number!");
-            }
-
-            else if(tbPhoneNumber.Text.Length>15|| tbPhoneNumber.Text.Length<7)
+            else if (tbPhoneNumber.Text.Length > 15 || tbPhoneNumber.Text.Length < 7)
             {
                 e.Cancel = true;
                 errorProvider.SetError(tbPhoneNumber, "Invalid phone number length!");
             }
-            
+            else
+            {
+                e.Cancel = false; // Allow the event to proceed
+                errorProvider.SetError(tbPhoneNumber, ""); // Clear any existing error message
+            }
         }
+
 
         private void numLoy_ValueChanged(object sender, EventArgs e)
         {
@@ -537,6 +536,11 @@ namespace hyacinthuslux
         }
 
         private void numId_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbFirstName_TextChanged(object sender, EventArgs e)
         {
 
         }

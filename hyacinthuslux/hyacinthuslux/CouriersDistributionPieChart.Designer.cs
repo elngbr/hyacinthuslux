@@ -1,6 +1,6 @@
 ﻿namespace hyacinthuslux
 {
-    partial class CouriersDistribution
+    partial class CouriersDistributionPieChart
     {
         private void InitializeComponent()
         {
@@ -8,7 +8,7 @@
             // 
             // CouriersDistribution
             // 
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(934, 713);
             this.Name = "CouriersDistribution";
             this.Load += new System.EventHandler(this.CouriersDistribution_Load);
             this.ResumeLayout(false);

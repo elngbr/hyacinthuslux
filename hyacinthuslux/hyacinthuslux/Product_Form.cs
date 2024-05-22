@@ -242,25 +242,25 @@ namespace hyacinthuslux
 
         private void tbTitle_Validating(object sender, CancelEventArgs e)
         {
-            if(String.IsNullOrEmpty(tbTitle.Text))
-            {
-                e.Cancel = true;
-                errorProvider.SetError(tbTitle, "It is mandatory to have a title!");
+            //if(String.IsNullOrEmpty(tbTitle.Text))
+            //{
+            //    e.Cancel = true;
+            //    errorProvider.SetError(tbTitle, "It is mandatory to have a title!");
 
-            }
+            //}
 
-            if (String.IsNullOrWhiteSpace(tbTitle.Text))
-            {
-                e.Cancel = true;
-                errorProvider.SetError(tbTitle, "It is mandatory to have a title!");
+            //if (String.IsNullOrWhiteSpace(tbTitle.Text))
+            //{
+            //    e.Cancel = true;
+            //    errorProvider.SetError(tbTitle, "It is mandatory to have a title!");
 
-            }
+            //}
 
-            if(tbTitle.Text.Length <2) 
-            {
-                e.Cancel = true;
-                errorProvider.SetError(tbTitle, "Flower Name too short!");
-            }
+            //if(tbTitle.Text.Length <2) 
+            //{
+            //    e.Cancel = true;
+            //    errorProvider.SetError(tbTitle, "Flower Name too short!");
+            //}
         }
 
         private void tbPrice_Validating(object sender, CancelEventArgs e)

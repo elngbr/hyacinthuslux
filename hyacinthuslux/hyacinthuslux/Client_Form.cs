@@ -253,23 +253,23 @@ namespace hyacinthuslux
 
         private void tbFirstName_Validating(object sender, CancelEventArgs e)
         {
-            if(tbFirstName.Text.Length<3)
-            {
-                e.Cancel = true;
-                errorProvider.SetError(tbFirstName, "FirstName too short!");
-            }
+            //if(tbFirstName.Text.Length<3)
+            //{
+            //    e.Cancel = true;
+            //    errorProvider.SetError(tbFirstName, "FirstName too short!");
+            //}
 
-            if (String.IsNullOrEmpty(tbFirstName.Text))
-            {
-                e.Cancel = true;
-                errorProvider.SetError(tbFirstName, "It's compulsory to have a name!");
-            }
+            //if (String.IsNullOrEmpty(tbFirstName.Text))
+            //{
+            //    e.Cancel = true;
+            //    errorProvider.SetError(tbFirstName, "It's compulsory to have a name!");
+            //}
 
-            if (String.IsNullOrWhiteSpace(tbFirstName.Text))
-            {
-                e.Cancel = true;
-                errorProvider.SetError(tbFirstName, "It's compulsory to have a name!");
-            }
+            //if (String.IsNullOrWhiteSpace(tbFirstName.Text))
+            //{
+            //    e.Cancel = true;
+            //    errorProvider.SetError(tbFirstName, "It's compulsory to have a name!");
+            //}
         }
 
         private void tbLastName_TextChanged(object sender, EventArgs e)

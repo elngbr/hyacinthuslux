@@ -150,19 +150,19 @@ createClient: Insert a new client into the database.
 
 ![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/53e2e615-820c-470e-933c-afd1e7ae69af)
 
-4) ReadClient: Read all clients from the database and store them in the clients list.
+3) ReadClient: Read all clients from the database and store them in the clients list.
 
 ![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/86268413-eddb-46f9-9aae-ca9cfa7a8d55)
 
-5) DisplayParticipants: Display the list of clients in the ListView control.
+4) DisplayParticipants: Display the list of clients in the ListView control.
 
 ![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/ca0be431-a534-4112-b70f-b4013edfbc64)
 
-6) updateClient: Update an existing client in the database.
+5) updateClient: Update an existing client in the database.
 
 ![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/9a4dc126-6af5-4da9-951b-a13325533d70)
 
-7) ResetForm: Reset the form fields to their default values.
+6) ResetForm: Reset the form fields to their default values.
 
 ![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/e07793c2-8074-4941-9111-56c416fee57e)
 

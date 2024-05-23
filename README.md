@@ -8,8 +8,8 @@ It includes essential functionalities for:
 #### Reporting: Generate and export reports.
 #### Graphical Representation: Display data in charts for better visualization.
 This application helps streamline business operations, making it easier to keep track of clients and products effectively.
-### Class: Client
-Purpose: Represents the customers of the flower shop, storing their personal and contact information.
+## Class: Client
+##### Purpose: Represents the customers of the flower shop, storing their personal and contact information.
 
 ##### Attributes
 clientId: An integer that serves as the unique identifier for each client.
@@ -66,7 +66,7 @@ to a predefined set of values, enhancing data consistency and integrity.
 ![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/0e7e0e6f-f4ca-4093-af0f-0a8c31ff71ce)
 
 
-### Class: Delivery
+## Class: Delivery
 Purpose: Represents the delivery details for orders placed by clients, including client information, products, delivery location, date, and method. It calculates the total value of the delivery including transport costs.
 
 ##### Attributes
@@ -99,7 +99,7 @@ ReturnCostBasedOnDeliveryMethod: Determines the cost of delivery based on the ch
 2) Product: The DeliveryProducts attribute contains a list of Product objects, each representing a product in the delivery.
 3) EnumCourier: The deliveryMethod attribute uses the EnumCourier.CourierEnum enumeration to specify the method of delivery, ensuring that only valid delivery methods are assigned.
 
-### EnumCourier Class
+## EnumCourier Class
 Purpose: Represents the different courier methods available for deliveries.
 
 ![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/ff05affc-a8c2-4553-8026-c20f53ebad4d)

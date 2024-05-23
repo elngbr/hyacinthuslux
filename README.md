@@ -129,6 +129,9 @@ This enum is used in the Delivery class to specify the delivery method, allowing
 The Client_Form class manages the user interface and functionalities for handling client data within the hyacinthuslux application.
 This form allows users to add, update, delete, and display client information. 
 
+![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/9dd00810-05cb-4c07-850f-4770af507c5e)
+
+
 ##### Attributes
 ConnectionString: A constant string used to connect to the SQLite database.
 ErrorProvider errorProvider: An instance of ErrorProvider used to provide validation feedback to the user.

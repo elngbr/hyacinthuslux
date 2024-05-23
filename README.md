@@ -549,6 +549,12 @@ The `CouriersDistributionPieChart` class in the `hyacinthuslux` project is desig
 The `CouriersDistributionPieChart` form is integrated into the `MainForm` of the `hyacinthuslux` application. The `CouriersPieChart_Click` event handler in `MainForm` creates and displays an instance of `CouriersDistributionPieChart`, passing the necessary courier distribution data.
 
 
+## Conclusion
+
+The `hyacinthuslux` project provides a comprehensive solution for managing the various aspects of a flower shop, from handling client and product information to processing deliveries. By integrating robust data management, validation, and reporting features, the application streamlines operations and ensures accuracy and efficiency. The inclusion of graphical representations and user-friendly interfaces enhances usability, making it easy for users to interact with and understand the data. Additionally, the ability to serialize data in different formats ensures that important information is preserved and easily accessible. Overall, `hyacinthuslux` significantly improves the day-to-day operations of a flower shop, providing a reliable and efficient tool for business management.
+
+
+![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/f87c0766-a4e9-4dc9-9b52-eaabf7130217)
 
 
 

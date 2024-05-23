@@ -66,6 +66,10 @@ Clone: Implements the ICloneable interface to create a copy of the current produ
 
 ![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/3efc3210-0b34-4cdc-be3f-6bec48392cb0)
 
+##### Integration with FlowerEnum Class
+The Product class integrates with the FlowerEnum class to specify the type of flower for each product. 
+This integration ensures that each product can be categorized correctly, providing clear information about the type of flower it represents.
+
 ##### Enum: FlowerEnum
 Purpose: Represents the different types of flowers that a product can be associated with. This enumeration ensures that the product type is restricted
 to a predefined set of values, enhancing data consistency and integrity.

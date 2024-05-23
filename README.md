@@ -244,6 +244,64 @@ ExportReportAsTxt: Export client data to a TXT file.
 
 ![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/ff720a8a-a28f-4cd2-9252-29ef85afca69)
 
+## Class: Product_Form
+The Product_Form class manages the user interface and functionalities for handling product data within the hyacinthuslux application. 
+This form allows users to add, update, delete, display, serialize, and print product information. Below is a comprehensive breakdown of its methods, buttons, and functionality.
+##### ! Same functionality as Clients_Form, this time complied for the products of the Flower Shop.
+##### Attributes
+ConnectionString: A constant string used to connect to the SQLite database.
+PrintDocument printDocument: An instance of PrintDocument used for printing product information.
+ErrorProvider errorProvider: An instance of ErrorProvider used to provide validation feedback to the user.
+List<Product> products: A list to hold the product data.
+
+##### Constructor
+Product_Form(): Initializes the form components, sets up the print document event, and initializes the product list.
+
+##### Methods
+1) Product_Form_Load: Load the form, populate the product type dropdown, read product data from the database, and display it.
+
+![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/8069d593-d50c-4284-89bb-e6ced684b310)
+
+
+2) createProduct: Insert a new product into the database.
+3) readProduct: Read all products from the database and store them in the products list.
+
+![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/db207101-beba-4b9a-8d60-673d98228a74)
+
+
+4) updateProduct: Update an existing product in the database.
+5) ResetForm: Reset the form fields to their default values.
+6) DisplayProducts: Display the list of products in the ListView control.
+7) DeleteProduct: Deletes the product from the database based on primary key @productName
+
+
+![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/0a8472e5-31e7-4ef9-b08f-fb19f44aac2c)
+
+
+##### Event Handlers
+1) btnAdd_Click: Add a new product to the list and database.
+2) btnSave_Click: : Save the changes made to an existing product.
+3) btnDeleteProduct_Click: Delete a selected product from the list and database.
+4) DeleteProduct: Delete a product from the database by name.
+5) lvProducts_MouseDoubleClick: Load the selected product details into the form fields for editing.
+6) tbTitle_Validating: Validate the title field to ensure it is not empty, whitespace, or too short.
+7) tbPrice_Validating: Validate the price field to ensure it is within a valid range.
+8) numStock_Validating: Validate the stock field to ensure it does not exceed a maximum value.
+9) SerializeBinary_Click: Serialize the product list to a binary file.
+10) DeserializeBinary_Click: Deserialize the product list from a binary file.
+11) SerializeXMLToolStripMenuItem_Click: Serialize the product list to an XML file.
+12) DeserializeXMLToolStripMenuItem_Click: Deserialize the product list from an XML file.
+13) PrintDocument_PrintPage: Handle the print page event to print the product list.
+14) buttonPrintPreview_Click: Show a print preview of the product list.
+
+
+![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/f2aecc10-bde6-4ee2-8488-d93359379d4c)
+
+####### NB: The `PrintDocument_PrintPage` method captures the visual representation of the `lvProducts` `ListView` control and draws it onto a `PrintDocument` at specified coordinates (50, 50). It starts by creating a new `Bitmap` object with dimensions matching the `lvProducts` control. A `Bitmap` is an in-memory representation of an image, which allows for drawing operations to be performed on it. The method then draws the `lvProducts` control onto this bitmap using the `DrawToBitmap` method, which takes the bitmap and a `Rectangle` specifying the area of the control to be drawn. Finally, the bitmap is printed onto the print document at the specified location using the `DrawImage` method of the `Graphics` object. The `buttonPrintPreview_Click` method sets up and displays a print preview dialog for the `PrintDocument`, allowing the user to see how the `ListView` will look when printed. It creates a new instance of `PrintPreviewDialog`, sets its `Document` property to `printDocument`, and then displays the dialog as a modal dialog box, waiting for the user to take an action such as clicking "Print" or "Close".
+
+
+15) btnCancel_Click: Close the form.
+
 
 
 

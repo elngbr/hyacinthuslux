@@ -8,6 +8,8 @@ It includes essential functionalities for:
 #### Reporting: Generate and export reports.
 #### Graphical Representation: Display data in charts for better visualization.
 This application helps streamline business operations, making it easier to keep track of clients and products effectively.
+
+
 ## Class: Client
 ##### Purpose: Represents the customers of the flower shop, storing their personal and contact information.
 
@@ -35,8 +37,11 @@ including validation for the address and phone number. Throws exceptions for inv
 
 ##### Custom Exceptions
 1) InvalidAddressException: Thrown when the client's address contains the word "Florida".
-   ![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/eb9a14ac-9fef-4887-9bef-88c9c2561ecd)
-2) General Exception: Thrown for a specific invalid phone number.
+2) 
+![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/eb9a14ac-9fef-4887-9bef-88c9c2561ecd)
+
+3) General Exception: Thrown for a specific invalid phone number.
+
 
 
 ### Class: Product
@@ -58,11 +63,13 @@ Parameterized Constructor: Initializes a new instance of the Product class with 
 
 ##### Methods
 Clone: Implements the ICloneable interface to create a copy of the current product instance. This method returns an object that is a clone of the current instance.
+
 ![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/3efc3210-0b34-4cdc-be3f-6bec48392cb0)
 
 ##### Enum: FlowerEnum
 Purpose: Represents the different types of flowers that a product can be associated with. This enumeration ensures that the product type is restricted
 to a predefined set of values, enhancing data consistency and integrity.
+
 ![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/0e7e0e6f-f4ca-4093-af0f-0a8c31ff71ce)
 
 
@@ -88,10 +95,16 @@ Parameterized Constructor: Initializes a new instance of the Delivery class with
 
 ##### Methods
 GetTotalValue: Calculates the total value of the delivery by summing the product values and adding the transport cost based on the delivery method.
+
 ![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/1720c520-07ea-4686-98f7-9180e790c7ae)
+
 DeliveryConcatenatedProducts: Creates a concatenated string representing the products and their quantities in the delivery.
+
 ![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/b7ab0f85-1dc5-46ab-b3eb-f8d9c709df13)
-ReturnCostBasedOnDeliveryMethod: Determines the cost of delivery based on the chosen delivery method. It offers free delivery for orders over a certain value and provides specific costs for various courier services.
+
+ReturnCostBasedOnDeliveryMethod: Determines the cost of delivery based on the chosen delivery method. It offers free delivery for orders over 
+a certain value and provides specific costs for various courier services.
+
 ![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/a63a3b15-52a4-4e17-b166-5b75e5439364)
 
 #### Integration with Other Classes
@@ -103,6 +116,7 @@ ReturnCostBasedOnDeliveryMethod: Determines the cost of delivery based on the ch
 Purpose: Represents the different courier methods available for deliveries.
 
 ![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/ff05affc-a8c2-4553-8026-c20f53ebad4d)
+
 This enum is used in the Delivery class to specify the delivery method, allowing for easy extension and maintenance of courier methods.
    
 

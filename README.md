@@ -138,38 +138,109 @@ List<Client> clients: A list to hold the client data.
 Client_Form(): Initializes the form components and sets up the initial list of clients.
    
 ##### Methods
-Client_Form_Load: Load the form, read client data from the database, and display it.
+1) Client_Form_Load: Load the form, read client data from the database, and display it.
 createClient: Insert a new client into the database.
-deleteClient: Delete a client from the database by ID.
-ReadClient: Read all clients from the database and store them in the clients list.
-DisplayParticipants: Display the list of clients in the ListView control.
-updateClient: Update an existing client in the database.
-ResetForm: Reset the form fields to their default values.
+
+![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/c47fb3aa-d802-42e0-aa15-31e8cb3a9e9f)
+
+2) deleteClient: Delete a client from the database by ID.
+
+![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/53e2e615-820c-470e-933c-afd1e7ae69af)
+
+4) ReadClient: Read all clients from the database and store them in the clients list.
+
+![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/86268413-eddb-46f9-9aae-ca9cfa7a8d55)
+
+5) DisplayParticipants: Display the list of clients in the ListView control.
+
+![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/ca0be431-a534-4112-b70f-b4013edfbc64)
+
+6) updateClient: Update an existing client in the database.
+
+![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/9a4dc126-6af5-4da9-951b-a13325533d70)
+
+7) ResetForm: Reset the form fields to their default values.
+
+![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/e07793c2-8074-4941-9111-56c416fee57e)
+
 
 ##### Event Handlers
-bntAdd_Click: Add a new client to the list and database.
-btnSaveClient_Click: Save the changes made to an existing client.
-btnDeleteClient_Click: Delete a selected client from the list and database.
-lvClients_MouseDoubleClick: Load the selected client details into the form fields for editing.
-tbPhoneNumber_Validating: Validate the phone number field to ensure it is not empty and has a valid length.
-tbLastName_Validating: Validate the last name field to ensure it meets certain criteria.
-tbAddress_Validating: Validate the address field to ensure it contains a comma and is not empty or whitespace.
-tbEmail_Validating: Validate the email field to ensure it contains an "@" symbol and is not empty or whitespace.
-numLoy_Validating: Validate the loyalty points field to ensure it is not greater than 99.
-Serialization and Deserialization: 
+1) bntAdd_Click: Add a new client to the list and database.
+
+![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/c76cded5-1ed9-4424-980f-f5ad637c23d1)
+
+
+2) btnSaveClient_Click: Save the changes made to an existing client.
+
+![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/1f88fc13-5872-4623-a96d-5dd395e4b0e8)
+
+
+3) btnDeleteClient_Click: Delete a selected client from the list and database.
+
+![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/d3b889a6-8632-4de2-a1ba-64da7e8b9d3b)
+
+
+4) lvClients_MouseDoubleClick: Load the selected client details into the form fields for editing.
+
+![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/003a8d2a-e851-4481-8a0f-6ed1c2a95339)
+
+5) tbPhoneNumber_Validating: Validate the phone number field to ensure it is not empty and has a valid length.
+
+![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/eb936694-3841-496d-9f40-1b79e4aac8c3)
+
+
+6) tbLastName_Validating: Validate the last name field to ensure it meets certain criteria.
+
+![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/40c983c9-98c7-4cbe-8a17-5d8a7d79630c)
+
+
+7) tbAddress_Validating: Validate the address field to ensure it contains a comma and is not empty or whitespace.
+
+![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/bb8c2ff6-a8e0-4050-a6c9-cf20fa1e04bb)
+
+
+8) tbEmail_Validating: Validate the email field to ensure it contains an "@" symbol and is not empty or whitespace.
+
+![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/42e0b200-13fe-4349-aa27-327de1616e88)
+
+
+9) numLoy_Validating: Validate the loyalty points field to ensure it is not greater than 99.
+
+![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/a9916a69-4e24-4693-b652-6be20375ffd8)
+
+10) Serialization and Deserialization: 
 #### serializeToolStripMenuItem_Click: Serialize the client list to a binary file.
 #### deserializeToolStripMenuItem_Click: Deserialize the client list from a binary file.
+
+![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/dc6e71c2-86ca-4a01-a0da-c5a1aeacd6bc)
+
+
 #### serializeXMLToolStripMenuItem_Click: Serialize the client list to an XML file.
 #### deserializeXMLToolStripMenuItem_Click: Deserialize the client list from an XML file.
-Clipboard Operations
+
+![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/ea4baec3-c2a1-4cee-910f-ad147bbe5996)
+
+
+11) Clipboard Operations
 #### btnCopy_Click: Copy the first name to the clipboard.
 #### btnPaste_Click: Paste the text from the clipboard to the first name field.
-Drag and Drop Operations
+
+![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/6718a6be-36b3-4141-8091-1fd8be06b006)
+
+
+12) Drag and Drop Operations
 #### tbPhoneNumber_MouseDown: Initiate a drag-and-drop operation with the phone number.
 #### tbPhoneNumber_DragEnter: Allow a copy effect if the data format is text.
 #### tbPhoneNumber_DragDrop: Handle the drop event to set the phone number text.
-Export to TXT
+
+![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/22484e16-394a-46b9-9042-082922136f0d)
+
+
+13) Export to TXT
 ExportReportAsTxt: Export client data to a TXT file.
+
+![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/ff720a8a-a28f-4cd2-9252-29ef85afca69)
+
 
 
 

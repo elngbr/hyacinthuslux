@@ -306,7 +306,6 @@ The `buttonPrintPreview_Click` method sets up and displays a print preview dialo
 
 15. **btnCancel_Click**: Close the form.
 
-![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/003a8d2a-e851-4481-8a0f-6ed1c2a95339)
 
 
 

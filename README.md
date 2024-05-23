@@ -66,7 +66,7 @@ Clone: Implements the ICloneable interface to create a copy of the current produ
 
 ![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/3efc3210-0b34-4cdc-be3f-6bec48392cb0)
 
-##### Integration with FlowerEnum Class
+##### Integration with EnumFlower Class
 The Product class integrates with the FlowerEnum class to specify the type of flower for each product. 
 This integration ensures that each product can be categorized correctly, providing clear information about the type of flower it represents.
 
@@ -122,5 +122,60 @@ Purpose: Represents the different courier methods available for deliveries.
 ![image](https://github.com/elngbr/hyacinthuslux/assets/142832941/ff05affc-a8c2-4553-8026-c20f53ebad4d)
 
 This enum is used in the Delivery class to specify the delivery method, allowing for easy extension and maintenance of courier methods.
+
+# Forms
+
+## Class: Client_Form
+The Client_Form class manages the user interface and functionalities for handling client data within the hyacinthuslux application.
+This form allows users to add, update, delete, and display client information. 
+
+##### Attributes
+ConnectionString: A constant string used to connect to the SQLite database.
+ErrorProvider errorProvider: An instance of ErrorProvider used to provide validation feedback to the user.
+List<Client> clients: A list to hold the client data.
+
+##### Constructor
+Client_Form(): Initializes the form components and sets up the initial list of clients.
    
+##### Methods
+Client_Form_Load: Load the form, read client data from the database, and display it.
+createClient: Insert a new client into the database.
+deleteClient: Delete a client from the database by ID.
+ReadClient: Read all clients from the database and store them in the clients list.
+DisplayParticipants: Display the list of clients in the ListView control.
+updateClient: Update an existing client in the database.
+ResetForm: Reset the form fields to their default values.
+
+##### Event Handlers
+bntAdd_Click: Add a new client to the list and database.
+btnSaveClient_Click: Save the changes made to an existing client.
+btnDeleteClient_Click: Delete a selected client from the list and database.
+lvClients_MouseDoubleClick: Load the selected client details into the form fields for editing.
+tbPhoneNumber_Validating: Validate the phone number field to ensure it is not empty and has a valid length.
+tbLastName_Validating: Validate the last name field to ensure it meets certain criteria.
+tbAddress_Validating: Validate the address field to ensure it contains a comma and is not empty or whitespace.
+tbEmail_Validating: Validate the email field to ensure it contains an "@" symbol and is not empty or whitespace.
+numLoy_Validating: Validate the loyalty points field to ensure it is not greater than 99.
+Serialization and Deserialization: 
+#### serializeToolStripMenuItem_Click: Serialize the client list to a binary file.
+#### deserializeToolStripMenuItem_Click: Deserialize the client list from a binary file.
+#### serializeXMLToolStripMenuItem_Click: Serialize the client list to an XML file.
+#### deserializeXMLToolStripMenuItem_Click: Deserialize the client list from an XML file.
+Clipboard Operations
+#### btnCopy_Click: Copy the first name to the clipboard.
+#### btnPaste_Click: Paste the text from the clipboard to the first name field.
+Drag and Drop Operations
+#### tbPhoneNumber_MouseDown: Initiate a drag-and-drop operation with the phone number.
+#### tbPhoneNumber_DragEnter: Allow a copy effect if the data format is text.
+#### tbPhoneNumber_DragDrop: Handle the drop event to set the phone number text.
+Export to TXT
+ExportReportAsTxt: Export client data to a TXT file.
+
+
+
+
+
+
+
+
 
